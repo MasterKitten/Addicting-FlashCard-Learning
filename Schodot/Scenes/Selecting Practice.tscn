@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Images/Graph.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Selecting Practice.gd" type="Script" id=2]
 [ext_resource path="res://Extra Scenes/Button2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Game Modes/Question & Answer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Font/Rawengulksans.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Audio/Music/Duck-and-Cover-trimmed.ogg" type="AudioStream" id=6]
 
 [node name="Selecting Practice" type="TextureRect"]
-margin_left = 798.0
+margin_left = 800.0
 margin_top = 77.0
-margin_right = 1045.0
+margin_right = 1047.0
 margin_bottom = 397.0
 rect_rotation = 90.0
 rect_scale = Vector2( 2.5, 2.5 )
@@ -19,9 +21,9 @@ TheScened = ExtResource( 4 )
 
 [node name="HFlowContainer" type="HFlowContainer" parent="."]
 margin_left = 1.52588e-05
-margin_top = 320.0
+margin_top = 319.6
 margin_right = 640.0
-margin_bottom = 815.0
+margin_bottom = 814.6
 rect_rotation = 270.0
 rect_scale = Vector2( 0.5, 0.5 )
 rect_clip_content = true
@@ -32,6 +34,28 @@ margin_top = 53.6
 margin_right = 299.6
 margin_bottom = 73.6
 rect_rotation = -90.0
+rect_scale = Vector2( 0.35, 0.35 )
+custom_fonts/font = ExtResource( 5 )
 text = "Back"
 
+[node name="WindowDialog" type="WindowDialog" parent="."]
+margin_left = 40.4
+margin_top = 127.2
+margin_right = 215.4
+margin_bottom = 327.2
+window_title = "Gamemode"
+
+[node name="Quiz" type="Button" parent="WindowDialog"]
+margin_left = 43.0
+margin_top = 14.0
+margin_right = 125.0
+margin_bottom = 34.0
+text = "Quiz Mode"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+bus = "Music"
+
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="WindowDialog/Quiz" to="." method="_on_Quiz_pressed"]

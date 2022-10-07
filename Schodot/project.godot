@@ -11,8 +11,12 @@ config_version=4
 [application]
 
 config/name="Schodot"
-run/main_scene="res://Main Scene.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://Defaults/Main Scene.tscn"
+config/icon="res://Defaults/icon.png"
+
+[audio]
+
+default_bus_layout="res://Defaults/default_bus_layout.tres"
 
 [compression]
 
@@ -41,4 +45,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://Defaults/default_env.tres"

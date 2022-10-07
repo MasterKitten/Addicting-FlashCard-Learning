@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/The-Agency-Heist-trimmed.ogg-13c240d4be233326de0d771976db6494.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/The-Agency-Heist-trimmed.ogg"
+dest_files=[ "res://.import/The-Agency-Heist-trimmed.ogg-13c240d4be233326de0d771976db6494.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

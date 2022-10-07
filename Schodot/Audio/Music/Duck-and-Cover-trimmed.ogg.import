@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Duck-and-Cover-trimmed.ogg-6e231a281bb3baab4e832a2866dcea02.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/Duck-and-Cover-trimmed.ogg"
+dest_files=[ "res://.import/Duck-and-Cover-trimmed.ogg-6e231a281bb3baab4e832a2866dcea02.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
