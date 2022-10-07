@@ -83,26 +83,35 @@ func load_game():
 		while SelectedGroup < Answers.size():
 			while i < Answers[SelectedGroup].size():
 				Answers[SelectedGroup].remove(i)
-				Answerss[i].queue_free()
 				i += 1
 			SelectedGroup += 1
+	i = 0
+	while i < Answerss.size():
+		Answerss[i].queue_free()
+		i += 1
 	var Questionss = QuestionGroup.get_children()
 	i = 0
 	SelectedGroup = 0
 	if Questions.size() != 0:
-		while SelectedGroup < Answers.size():
+		while SelectedGroup < Questions.size():
 			while i < Questions[SelectedGroup].size():
 				Questions[SelectedGroup].remove(i)
-				Questionss[i].queue_free()
 				i += 1
 			SelectedGroup += 1
+	i = 0
+	while i < Questionss.size():
+		Questionss[i].queue_free()
+		i += 1
 	var Groupss = Group.get_children()
 	i = 0
 	if (Groups.size() != 0):
 		while i < Groups.size():
 			Groups.remove(i)
-			Groupss[i].queue_free()
 			i += 1
+	i = 0
+	while i < Groupss.size():
+		Groupss[i].queue_free()
+		i += 1
 		
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
@@ -223,17 +232,21 @@ func Nothing():
 func _on_Delete_Group_pressed():
 	# if a group is selected...
 	if (SelectedGroup != -1):
+		# Remove it!
 		Groups.remove(SelectedGroup)
 		Answers.remove(SelectedGroup)
 		Questions.remove(SelectedGroup)
+		# So my code broke somehow, and this was the solution.
+		for x in Group.get_children():
+			x.queue_free()
 		var i = 0
-		var Items = Group.get_children()
-		Items[i].queue_free()
-		Items = Group.get_children()
-		# Setting numbers for selection
-		while i < Items.size():
-			Items[i].ItemThing = i - 1
+		while i < Groups.size():
+			var Item = Butt.instance()
+			Item.text = Groups[i]
+			Item.ItemThing = i
+			Group.add_child(Item)
 			i += 1
+		i = 0
 	else:
 		print("Select A Group!")
 
