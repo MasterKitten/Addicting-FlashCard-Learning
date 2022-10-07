@@ -3,7 +3,7 @@ extends TextureRect
 onready var Practice = get_parent().get_node("Selecting Practice")
 
 func _on_Spanish_pressed():
-	print("Click!")
+	_on_FileDialog_file_selected("res://Pre-made Cards/Spanish")
 
 func _on_Select_Custom_pressed():
 	get_node("FileDialog").popup()

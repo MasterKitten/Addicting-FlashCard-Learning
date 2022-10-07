@@ -7,6 +7,22 @@ var ShuffledAnswers = []
 var RNG = RandomNumberGenerator.new()
 var Stop = false
 
+var StartTimer = false
+var timer = 0
+
+func _physics_process(delta):
+	if StartTimer == true:
+		timer += delta
+	if timer >= 1:
+		get_node("Win").visible = false
+		get_node("Lose").visible = false
+		StartTimer = false
+		timer = 0
+		if (SelectedAnswers.size() == 0 && SelectedQuestions.size() == 0):
+			queue_free()
+		else:
+			UpdateText()
+
 func UpdateText():
 	RNG.randomize()
 	var i = 0
@@ -32,12 +48,12 @@ func UpdateText():
 func _on_Answer_pressed(Integer):
 	# Programmer, DO SOMETHING WITH THIS!
 	if get_node("Answer 0" + str(Integer)).text == SelectedAnswers[0]:
-		print("Correct!")
-	else:
-		print("Incorrect!")
+		get_node("Win").visible = true
+		get_node("AudioCorrect").play()
+		StartTimer = true
+	if get_node("Answer 0" + str(Integer)).text != SelectedAnswers[0]:
+		get_node("Lose").visible = true
+		get_node("AudioIncorrect").play()
+		StartTimer = true
 	SelectedAnswers.remove(0)
 	SelectedQuestions.remove(0)
-	if (SelectedAnswers.size() == 0 && SelectedQuestions.size() == 0):
-		queue_free()
-	else:
-		UpdateText()

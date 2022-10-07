@@ -1,0 +1,147 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Images/Lined.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Game Modes/Question & Answer.gd" type="Script" id=2]
+[ext_resource path="res://Audio/AudioCorrect.wav" type="AudioStream" id=3]
+[ext_resource path="res://Audio/AudioIncorrect.wav" type="AudioStream" id=4]
+
+[node name="Question & Answer" type="TextureRect"]
+margin_left = 60.0
+margin_top = 33.0
+margin_right = 262.0
+margin_bottom = 283.0
+rect_rotation = -90.0
+rect_scale = Vector2( 1.6, 1.6 )
+rect_pivot_offset = Vector2( 101, 125 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Question Text" type="RichTextLabel" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 30.0
+margin_top = 10.0
+margin_right = 310.0
+margin_bottom = 60.0
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Question 01"
+
+[node name="Answer 00" type="Button" parent="."]
+margin_left = 30.0
+margin_top = 98.0
+margin_right = 380.0
+margin_bottom = 148.0
+rect_scale = Vector2( 0.4, 0.4 )
+text = "Answer 01"
+
+[node name="Answer 01" type="Button" parent="."]
+margin_left = 30.0
+margin_top = 124.0
+margin_right = 380.0
+margin_bottom = 174.0
+rect_scale = Vector2( 0.4, 0.4 )
+text = "Answer 02"
+
+[node name="Answer 02" type="Button" parent="."]
+margin_left = 30.0
+margin_top = 149.5
+margin_right = 380.0
+margin_bottom = 199.5
+rect_scale = Vector2( 0.4, 0.4 )
+text = "Answer 03"
+
+[node name="Answer 03" type="Button" parent="."]
+margin_left = 30.0
+margin_top = 176.0
+margin_right = 380.0
+margin_bottom = 226.0
+rect_scale = Vector2( 0.4, 0.4 )
+text = "Answer 04"
+
+[node name="Win" type="ColorRect" parent="."]
+visible = false
+margin_right = 202.0
+margin_bottom = 249.0
+color = Color( 0, 0.301961, 0.133333, 1 )
+
+[node name="Label" type="Label" parent="Win"]
+modulate = Color( 0, 1, 0.0392157, 1 )
+margin_left = 74.75
+margin_top = 113.75
+margin_right = 135.75
+margin_bottom = 127.75
+text = "CORRECT!"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Win"]
+amount = 100
+lifetime = 2.0
+preprocess = 2.0
+speed_scale = 1.1
+fixed_fps = 120
+spread = 90.0
+gravity = Vector2( 0, 300 )
+orbit_velocity = 0.5
+orbit_velocity_random = 1.0
+color = Color( 0, 1, 0.0392157, 1 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="Win"]
+position = Vector2( 200, 0 )
+amount = 100
+lifetime = 2.0
+preprocess = 2.0
+speed_scale = 1.1
+fixed_fps = 120
+spread = 90.0
+gravity = Vector2( 0, 300 )
+orbit_velocity = -0.5
+orbit_velocity_random = 1.0
+color = Color( 0, 1, 0.0392157, 1 )
+
+[node name="Lose" type="ColorRect" parent="."]
+visible = false
+margin_right = 202.0
+margin_bottom = 249.0
+color = Color( 0.301961, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="Lose"]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 66.625
+margin_top = 111.875
+margin_right = 136.625
+margin_bottom = 125.875
+text = "Incorrect..."
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Lose"]
+amount = 100
+lifetime = 2.0
+preprocess = 2.0
+speed_scale = 1.1
+fixed_fps = 120
+spread = 90.0
+gravity = Vector2( 0, 200 )
+orbit_velocity = 0.05
+orbit_velocity_random = 1.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="Lose"]
+position = Vector2( 200, 0 )
+amount = 100
+lifetime = 2.0
+preprocess = 2.0
+speed_scale = 1.1
+fixed_fps = 120
+spread = 90.0
+gravity = Vector2( 0, 200 )
+orbit_velocity = -0.05
+orbit_velocity_random = 1.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="AudioCorrect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="AudioIncorrect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[connection signal="pressed" from="Answer 00" to="." method="_on_Answer_pressed" binds= [ 0 ]]
+[connection signal="pressed" from="Answer 01" to="." method="_on_Answer_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="Answer 02" to="." method="_on_Answer_pressed" binds= [ 2 ]]
+[connection signal="pressed" from="Answer 03" to="." method="_on_Answer_pressed" binds= [ 3 ]]

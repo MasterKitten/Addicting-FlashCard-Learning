@@ -17,9 +17,14 @@ var SelectedGroup = -1
 export (PackedScene) var Labell
 var SelectedLabel = -1
 
+var SaveToDev = false
+
 # Open saving with a button press
 func _on_Save_pressed():
-	get_node("Saving Stuffs/FileDialog").popup()
+	if !SaveToDev:
+		get_node("Saving Stuffs/FileDialog").popup()
+	else:
+		get_node("Saving Stuffs/DeveloperFile").popup()
 
 # From the Godot Tutorial.
 func save():
@@ -52,7 +57,10 @@ func _on_FileDialog_file_selected(path):
 
 # open loading with a button press
 func _on_Load_pressed():
-	get_node("Saving Stuffs/FileDialog2").popup()
+	if !SaveToDev:
+		get_node("Saving Stuffs/FileDialog2").popup()
+	else:
+		get_node("Saving Stuffs/DeveloperFile2").popup()
 
 # When the file to load is selected...
 func _on_FileDialog2_file_selected(path):
@@ -193,12 +201,14 @@ func Pingas():
 		var Item = Labell.instance()
 		QuestionGroup.add_child(Item)
 		Item.text = str(i + 1) + ". " + Questions[SelectedGroup][i]
+		Item.ItemThing = i
 		i += 1
 	i = 0
 	while i < Answers[SelectedGroup].size():
 		var Item = Labell.instance()
 		AnswerGroup.add_child(Item)
 		Item.text = str(i + 1) + ". " + Answers[SelectedGroup][i]
+		Item.ItemThing = i
 		i += 1
 
 # This function checks for nothing. Returns true if there is, in fact, nothing
@@ -251,6 +261,7 @@ func _on_Delete_Item_pressed():
 			print("Select A Label!")
 	else:
 		print("Even the Questions & Answers!")
+	Pingas()
 
 # This goes back to the main menu
 func _on_Quit_pressed():
@@ -332,3 +343,6 @@ func _on_ItemThing_text_changed(new_text):
 
 func _on_ToItemThing_text_changed(new_text):
 	AfterItem = int(new_text)
+
+func _on_Checking_toggled(button_pressed):
+	SaveToDev = button_pressed

@@ -15,6 +15,13 @@ Labell = ExtResource( 3 )
 margin_right = 40.0
 margin_bottom = 40.0
 
+[node name="Checking" type="CheckBox" parent="Saving Stuffs"]
+margin_left = 336.0
+margin_top = 615.0
+margin_right = 463.0
+margin_bottom = 639.0
+text = "Developer Save"
+
 [node name="Save" type="Button" parent="Saving Stuffs"]
 margin_left = 350.0
 margin_top = 750.0
@@ -46,6 +53,22 @@ margin_bottom = 511.0
 window_title = "Open a File"
 mode = 0
 access = 1
+
+[node name="DeveloperFile" type="FileDialog" parent="Saving Stuffs"]
+margin_left = 173.0
+margin_top = 174.0
+margin_right = 573.0
+margin_bottom = 474.0
+dialog_text = "Look at Pre-made Cards folder."
+
+[node name="DeveloperFile2" type="FileDialog" parent="Saving Stuffs"]
+margin_left = 402.0
+margin_top = 211.0
+margin_right = 802.0
+margin_bottom = 511.0
+window_title = "Open a File"
+dialog_text = "Look at Pre-made Cards folder."
+mode = 0
 
 [node name="Quit" type="Button" parent="Saving Stuffs"]
 margin_left = 342.0
@@ -224,10 +247,13 @@ margin_right = 198.0
 margin_bottom = 145.0
 text = "Change Item"
 
+[connection signal="toggled" from="Saving Stuffs/Checking" to="." method="_on_Checking_toggled"]
 [connection signal="pressed" from="Saving Stuffs/Save" to="." method="_on_Save_pressed"]
 [connection signal="pressed" from="Saving Stuffs/Load" to="." method="_on_Load_pressed"]
 [connection signal="file_selected" from="Saving Stuffs/FileDialog" to="." method="_on_FileDialog_file_selected"]
 [connection signal="file_selected" from="Saving Stuffs/FileDialog2" to="." method="_on_FileDialog2_file_selected"]
+[connection signal="file_selected" from="Saving Stuffs/DeveloperFile" to="." method="_on_FileDialog_file_selected"]
+[connection signal="file_selected" from="Saving Stuffs/DeveloperFile2" to="." method="_on_FileDialog2_file_selected"]
 [connection signal="pressed" from="Saving Stuffs/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="Group Stuff/Delete Group" to="." method="_on_Delete_Group_pressed"]
 [connection signal="pressed" from="Group Stuff/Delete Item" to="." method="_on_Delete_Item_pressed"]
