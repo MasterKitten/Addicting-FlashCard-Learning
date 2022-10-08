@@ -1,7 +1,63 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Main Menu.gd" type="Script" id=1]
 [ext_resource path="res://Images/Lined.png" type="Texture" id=2]
+[ext_resource path="res://Font/Rawengulksans.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 160, -30 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 7.0 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Slide"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 146, 9 ), Vector2( 346, 297 ), Vector2( 554, 413 ), Vector2( 760, 623 ), Vector2( 747, 965 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 7.0, 60.0, 75.0, 91.0 ]
+}
 
 [node name="Main Menu" type="TextureRect"]
 margin_left = 160.0
@@ -17,13 +73,14 @@ script = ExtResource( 1 )
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.3
-margin_left = -31.2936
-margin_top = 5.64808
-margin_right = 28.7064
-margin_bottom = -44.3519
-rect_scale = Vector2( 1.5, 1.5 )
+margin_left = -56.0686
+margin_top = 4.89406
+margin_right = 137.931
+margin_bottom = -12.1059
+rect_scale = Vector2( 0.33, 0.33 )
 rect_pivot_offset = Vector2( 30, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 3 )
 text = "Schodot!"
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -45,7 +102,9 @@ icon_align = 1
 [node name="Label" type="Label" parent="ColorRect"]
 margin_right = 100.0
 margin_bottom = 20.0
+rect_scale = Vector2( 0.37, 0.37 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Press To Play!"
 align = 1
 
@@ -68,9 +127,41 @@ icon_align = 1
 [node name="Label" type="Label" parent="ColorRect2"]
 margin_right = 100.0
 margin_bottom = 20.0
+rect_scale = Vector2( 0.37, 0.37 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Create Words"
 align = 1
 
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_left = 93.4404
+margin_top = 170.215
+margin_right = 193.44
+margin_bottom = 190.215
+rect_scale = Vector2( 0.67, 0.67 )
+color = Color( 0.803922, 0.803922, 0.803922, 1 )
+
+[node name="Setting" type="Button" parent="ColorRect3"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -3.05176e-05
+margin_right = 100.0
+margin_bottom = 20.0
+text = "Settings"
+icon_align = 1
+
+[node name="Label" type="Label" parent="ColorRect3"]
+margin_right = 100.0
+margin_bottom = 20.0
+rect_scale = Vector2( 0.37, 0.37 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Settings"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/Slide = SubResource( 1 )
+
 [connection signal="pressed" from="ColorRect/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="ColorRect2/Magic" to="." method="_on_Magic_pressed"]
+[connection signal="pressed" from="ColorRect3/Setting" to="." method="_on_Setting_pressed"]

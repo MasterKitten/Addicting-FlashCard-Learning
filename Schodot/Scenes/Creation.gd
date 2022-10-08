@@ -78,31 +78,37 @@ func load_game():
 	# What does this do? When loading another file, we have to remove EVERYTHING!
 	var Answerss = AnswerGroup.get_children()
 	var i = 0
-	SelectedGroup = 0 #problem right here
-	if Answers.size() != 0:
-		while SelectedGroup < Answers.size():
-			while i < Answers[SelectedGroup].size():
-				Answers[SelectedGroup].remove(i)
-				Answerss[i].queue_free()
-				i += 1
-			SelectedGroup += 1
+	var x = 0
+	while x < Answers.size():
+		while i != Answers[x].size():
+			Answers[x].remove(i)
+			i = 0
+		x += 1
+	i = 0
+	while i < Answerss.size():
+		Answerss[i].queue_free()
+		i += 1
 	var Questionss = QuestionGroup.get_children()
 	i = 0
-	SelectedGroup = 0
-	if Questions.size() != 0:
-		while SelectedGroup < Answers.size():
-			while i < Questions[SelectedGroup].size():
-				Questions[SelectedGroup].remove(i)
-				Questionss[i].queue_free()
-				i += 1
-			SelectedGroup += 1
+	x = 0
+	while x < Questions.size():
+		while i != Questions[x].size():
+			Questions[x].remove(i)
+			i = 0
+		x += 1
+	i = 0
+	while i < Questionss.size():
+		Questionss[i].queue_free()
+		i += 1
 	var Groupss = Group.get_children()
 	i = 0
-	if (Groups.size() != 0):
-		while i < Groups.size():
-			Groups.remove(i)
-			Groupss[i].queue_free()
-			i += 1
+	while i != Groups.size():
+		Groups.remove(i)
+		i += 1
+	i = 0
+	while i < Groupss.size():
+		Groupss[i].queue_free()
+		i += 1
 		
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
@@ -223,17 +229,21 @@ func Nothing():
 func _on_Delete_Group_pressed():
 	# if a group is selected...
 	if (SelectedGroup != -1):
+		# Remove it!
 		Groups.remove(SelectedGroup)
 		Answers.remove(SelectedGroup)
 		Questions.remove(SelectedGroup)
+		# So my code broke somehow, and this was the solution.
+		for x in Group.get_children():
+			x.queue_free()
 		var i = 0
-		var Items = Group.get_children()
-		Items[i].queue_free()
-		Items = Group.get_children()
-		# Setting numbers for selection
-		while i < Items.size():
-			Items[i].ItemThing = i - 1
+		while i < Groups.size():
+			var Item = Butt.instance()
+			Item.text = Groups[i]
+			Item.ItemThing = i
+			Group.add_child(Item)
 			i += 1
+		i = 0
 	else:
 		print("Select A Group!")
 
@@ -265,7 +275,7 @@ func _on_Delete_Item_pressed():
 
 # This goes back to the main menu
 func _on_Quit_pressed():
-	var _nill = get_tree().change_scene("res://Main Scene.tscn")
+	var _nill = get_tree().change_scene("res://Defaults/Main Scene.tscn")
 
 func _on_Open_Movement_pressed():
 	get_node("Movement Dialog").popup()

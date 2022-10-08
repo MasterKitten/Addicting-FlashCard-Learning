@@ -9,6 +9,7 @@ export (Array, String) var SelectedQuestions
 
 export (PackedScene) var Butt
 export (PackedScene) var TheScened
+var ItemToDo = 0
 
 func Populate(datas):
 	Groups = datas.Groups
@@ -23,15 +24,15 @@ func Populate(datas):
 		Item.text = str(Item.ItemThing + 1) + ". " + Groups[i]
 		i += 1
 
-func Select(ItemThing):
+func _on_Quiz_pressed():
 	var i = 0
-	while i < Questions[ItemThing].size():
-		var Thing = Questions[ItemThing][i]
+	while i < Questions[ItemToDo].size():
+		var Thing = Questions[ItemToDo][i]
 		SelectedQuestions.append(Thing)
 		i += 1
 	i = 0
-	while i < Answers[ItemThing].size():
-		var Thing = Answers[ItemThing][i]
+	while i < Answers[ItemToDo].size():
+		var Thing = Answers[ItemToDo][i]
 		SelectedAnswers.append(Thing)
 		i += 1
 	var Item = TheScened.instance()
@@ -39,6 +40,15 @@ func Select(ItemThing):
 	Item.SelectedQuestions = SelectedQuestions
 	Item.SelectedAnswers = SelectedAnswers
 	Item.UpdateText()
+	GoToGame()
+
+func Popups(ItemThing):
+	ItemToDo = ItemThing
+	get_node("WindowDialog").popup()
+
+func GoToGame():
+	get_node("Music").stop()
+	get_node("WindowDialog").visible = false
 
 func _on_Quit_pressed():
-	var _nill = get_tree().change_scene("res://Main Scene.tscn")
+	var _nill = get_tree().change_scene("res://Defaults/Main Scene.tscn")
