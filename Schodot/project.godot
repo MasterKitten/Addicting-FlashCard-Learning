@@ -25,6 +25,7 @@ formats/zstd/window_log_size=30
 
 [debug]
 
+settings/fps/force_fps=90
 settings/stdout/print_fps=true
 gdscript/completion/autocomplete_setters_and_getters=true
 

@@ -167,15 +167,13 @@ custom_fonts/font = SubResource( 2 )
 
 [node name="AudioCorrect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = 4.0
 
 [node name="AudioIncorrect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = 4.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -3.0
+volume_db = -5.0
 autoplay = true
 bus = "Music"
 

@@ -54,6 +54,7 @@ text = "Quiz Mode"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = -5.0
 autoplay = true
 bus = "Music"
 

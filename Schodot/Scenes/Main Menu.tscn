@@ -133,9 +133,35 @@ custom_fonts/font = ExtResource( 3 )
 text = "Create Words"
 align = 1
 
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_left = 93.4404
+margin_top = 170.215
+margin_right = 193.44
+margin_bottom = 190.215
+rect_scale = Vector2( 0.67, 0.67 )
+color = Color( 0.803922, 0.803922, 0.803922, 1 )
+
+[node name="Setting" type="Button" parent="ColorRect3"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -3.05176e-05
+margin_right = 100.0
+margin_bottom = 20.0
+text = "Settings"
+icon_align = 1
+
+[node name="Label" type="Label" parent="ColorRect3"]
+margin_right = 100.0
+margin_bottom = 20.0
+rect_scale = Vector2( 0.37, 0.37 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Settings"
+align = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
 anims/Slide = SubResource( 1 )
 
 [connection signal="pressed" from="ColorRect/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="ColorRect2/Magic" to="." method="_on_Magic_pressed"]
+[connection signal="pressed" from="ColorRect3/Setting" to="." method="_on_Setting_pressed"]

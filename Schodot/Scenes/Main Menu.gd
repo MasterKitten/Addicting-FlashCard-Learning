@@ -5,3 +5,6 @@ func _on_Play_pressed():
 
 func _on_Magic_pressed():
 	var _nill = get_tree().change_scene("res://Scenes/Creation.tscn")
+
+func _on_Setting_pressed():
+	var _nill = get_tree().change_scene("res://Scenes/Settings.tscn")

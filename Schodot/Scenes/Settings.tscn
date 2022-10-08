@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Settings.gd" type="Script" id=1]
+[ext_resource path="res://Font/Rawengulksans.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Audio/Music/Snug.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Audio/AudioCorrect.wav" type="AudioStream" id=4]
+[ext_resource path="res://Font/Smaller_Rawengulksans.tres" type="DynamicFont" id=5]
+
+[node name="Settings" type="ColorRect"]
+margin_right = 800.0
+margin_bottom = 800.0
+color = Color( 0.788235, 0, 0, 1 )
+script = ExtResource( 1 )
+
+[node name="Music" type="Label" parent="."]
+margin_left = 29.0
+margin_top = 24.0
+margin_right = 228.0
+margin_bottom = 79.0
+custom_fonts/font = ExtResource( 2 )
+text = "Music Bar"
+
+[node name="Music_Bar" type="HSlider" parent="Music"]
+margin_top = 54.0
+margin_right = 200.0
+margin_bottom = 70.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Master" type="Label" parent="."]
+margin_left = 30.0
+margin_top = 97.0
+margin_right = 251.0
+margin_bottom = 152.0
+custom_fonts/font = ExtResource( 2 )
+text = "Master Bar"
+
+[node name="Master_Bar" type="HSlider" parent="Master"]
+margin_top = 54.0
+margin_right = 200.0
+margin_bottom = 70.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Music2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -5.0
+autoplay = true
+bus = "Music"
+
+[node name="AudioTest" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 705.0
+margin_top = 82.0
+margin_right = 748.0
+margin_bottom = 107.0
+custom_fonts/font = ExtResource( 5 )
+text = "Back"
+
+[connection signal="value_changed" from="Music/Music_Bar" to="." method="_on_Music_Bar_value_changed"]
+[connection signal="drag_ended" from="Master/Master_Bar" to="." method="_on_Master_Bar_drag_ended"]
+[connection signal="value_changed" from="Master/Master_Bar" to="." method="_on_Master_Bar_value_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
