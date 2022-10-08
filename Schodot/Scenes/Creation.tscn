@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Creation.gd" type="Script" id=1]
 [ext_resource path="res://Extra Scenes/Button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Extra Scenes/Label.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Font/Smaller_Rawengulksans.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Audio/Music/Snug.ogg" type="AudioStream" id=5]
 
 [node name="Creation" type="Control"]
 anchor_right = 1.0
@@ -250,6 +251,12 @@ margin_top = 125.0
 margin_right = 198.0
 margin_bottom = 145.0
 text = "Change Item"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -5.0
+autoplay = true
+bus = "Music"
 
 [connection signal="toggled" from="Saving Stuffs/Checking" to="." method="_on_Checking_toggled"]
 [connection signal="pressed" from="Saving Stuffs/Save" to="." method="_on_Save_pressed"]
