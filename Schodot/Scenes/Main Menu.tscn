@@ -1,8 +1,63 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Main Menu.gd" type="Script" id=1]
 [ext_resource path="res://Images/Lined.png" type="Texture" id=2]
 [ext_resource path="res://Font/Rawengulksans.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 160, -30 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 7.0 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Slide"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 146, 9 ), Vector2( 346, 297 ), Vector2( 554, 413 ), Vector2( 760, 623 ), Vector2( 747, 965 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 7.0, 60.0, 75.0, 91.0 ]
+}
 
 [node name="Main Menu" type="TextureRect"]
 margin_left = 160.0
@@ -77,6 +132,10 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "Create Words"
 align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/Slide = SubResource( 1 )
 
 [connection signal="pressed" from="ColorRect/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="ColorRect2/Magic" to="." method="_on_Magic_pressed"]

@@ -23,4 +23,4 @@ func _on_FileDialog_file_selected(path):
 		var node_data = parse_json(save_game.get_line())
 		Practice.Populate(node_data)
 	save_game.close()
-	self.hide()
+	get_node("AnimationPlayer").play("Slide")

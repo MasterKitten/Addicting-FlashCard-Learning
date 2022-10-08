@@ -51,4 +51,4 @@ func GoToGame():
 	get_node("WindowDialog").visible = false
 
 func _on_Quit_pressed():
-	var _nill = get_tree().change_scene("res://Main Scene.tscn")
+	var _nill = get_tree().change_scene("res://Defaults/Main Scene.tscn")
