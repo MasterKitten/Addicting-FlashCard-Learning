@@ -73,10 +73,10 @@ script = ExtResource( 1 )
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.3
-margin_left = -56.0686
-margin_top = 4.89406
-margin_right = 137.931
-margin_bottom = -12.1059
+margin_left = -49.8638
+margin_top = 3.46052
+margin_right = 144.136
+margin_bottom = -14.5395
 rect_scale = Vector2( 0.33, 0.33 )
 rect_pivot_offset = Vector2( 30, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
@@ -84,10 +84,10 @@ custom_fonts/normal_font = ExtResource( 3 )
 text = "Schodot!"
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 49.0976
-margin_top = 46.1758
-margin_right = 149.098
-margin_bottom = 66.1758
+margin_left = 46.9166
+margin_top = 65.1009
+margin_right = 146.917
+margin_bottom = 85.1009
 rect_scale = Vector2( 0.67, 0.67 )
 color = Color( 0.803922, 0.803922, 0.803922, 1 )
 
@@ -109,10 +109,10 @@ text = "Press To Play!"
 align = 1
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-margin_left = 114.669
-margin_top = 72.5231
-margin_right = 214.669
-margin_bottom = 92.5231
+margin_left = 112.488
+margin_top = 91.4482
+margin_right = 212.488
+margin_bottom = 111.448
 rect_scale = Vector2( 0.67, 0.67 )
 color = Color( 0.803922, 0.803922, 0.803922, 1 )
 
@@ -134,10 +134,10 @@ text = "Create Words"
 align = 1
 
 [node name="ColorRect3" type="ColorRect" parent="."]
-margin_left = 93.4404
-margin_top = 170.215
-margin_right = 193.44
-margin_bottom = 190.215
+margin_left = 91.2594
+margin_top = 189.14
+margin_right = 191.259
+margin_bottom = 209.14
 rect_scale = Vector2( 0.67, 0.67 )
 color = Color( 0.803922, 0.803922, 0.803922, 1 )
 
@@ -161,6 +161,20 @@ align = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
 anims/Slide = SubResource( 1 )
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.3
+margin_left = -101.459
+margin_top = 20.8782
+margin_right = 598.541
+margin_bottom = 65.8782
+rect_scale = Vector2( 0.25, 0.25 )
+rect_pivot_offset = Vector2( 30, 0 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 3 )
+text = "*Requires International Keyboard*"
 
 [connection signal="pressed" from="ColorRect/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="ColorRect2/Magic" to="." method="_on_Magic_pressed"]

@@ -7,6 +7,9 @@ var Flipped = false
 var CurrentQuestion = 0
 
 func UpdateText():
+	get_node("Next").text = "Next"
+	if CurrentQuestion == SelectedQuestions.size() - 1:
+		get_node("Next").text = "Finish"
 	if Flipped == true && CurrentQuestion != SelectedQuestions.size():
 		get_node("Label").text = SelectedAnswers[CurrentQuestion]
 		get_node("Label2").text = "Answer:"
@@ -27,10 +30,6 @@ func _on_Next_pressed():
 	if CurrentQuestion == SelectedQuestions.size():
 		get_parent().get_node("Selecting Practice").BackToLevel()
 		queue_free()
-	if CurrentQuestion == SelectedQuestions.size() - 1:
-		get_node("Next").text = "Finish"
-	else:
-		get_node("Next").text = "Next"
 	get_node("Back").visible = true
 	UpdateText()
 

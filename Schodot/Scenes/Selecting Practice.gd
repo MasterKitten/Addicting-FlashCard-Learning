@@ -11,6 +11,7 @@ export (PackedScene) var Butt
 
 export (PackedScene) var QuizScene
 export (PackedScene) var FlashScene
+export (PackedScene) var TypingScene
 
 var ItemToDo = 0
 
@@ -28,24 +29,16 @@ func Populate(datas):
 		i += 1
 
 func _on_Quiz_pressed():
-	InsertThings()
-	var Item = QuizScene.instance()
-	get_parent().get_node(".").add_child(Item)
-	Item.SelectedQuestions = SelectedQuestions
-	Item.SelectedAnswers = SelectedAnswers
-	Item.UpdateText()
-	GoToGame()
+	ItemSpawn(QuizScene)
 
 func _on_Flash_pressed():
-	InsertThings()
-	var Item = FlashScene.instance()
-	get_parent().add_child(Item)
-	Item.SelectedQuestions = SelectedQuestions
-	Item.SelectedAnswers = SelectedAnswers
-	Item.UpdateText()
-	GoToGame()
+	ItemSpawn(FlashScene)
 
-func InsertThings():
+func _on_Learning_pressed():
+	ItemSpawn(TypingScene)
+
+# Seperate function to stop broken code
+func ItemSpawn(Instance):
 	var i = 0
 	SelectedAnswers = []
 	SelectedQuestions = []
@@ -58,6 +51,12 @@ func InsertThings():
 		var Thing = Answers[ItemToDo][i]
 		SelectedAnswers.append(Thing)
 		i += 1
+	var Item = Instance.instance()
+	get_parent().add_child(Item)
+	Item.SelectedQuestions = SelectedQuestions
+	Item.SelectedAnswers = SelectedAnswers
+	Item.UpdateText()
+	GoToGame()
 
 func Popups(ItemThing):
 	ItemToDo = ItemThing

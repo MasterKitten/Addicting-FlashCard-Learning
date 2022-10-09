@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Top-Gear-Bordeaux.ogg-353da2d3f5f5bacdc826965fa7cce43b.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/Top-Gear-Bordeaux.ogg"
+dest_files=[ "res://.import/Top-Gear-Bordeaux.ogg-353da2d3f5f5bacdc826965fa7cce43b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
