@@ -37,7 +37,7 @@ func _physics_process(delta):
 		StartTimer = false
 		timer = 0
 		if (SelectedAnswers.size() == 0 && SelectedQuestions.size() == 0):
-			get_parent().get_node("Music").play()
+			get_parent().get_node("Selecting Practice").BackToLevel()
 			queue_free()
 		else:
 			UpdateText()

@@ -19,22 +19,22 @@ use_filter = true
 font_data = ExtResource( 6 )
 
 [node name="Question & Answer" type="TextureRect"]
-margin_left = 60.0
-margin_top = 33.0
-margin_right = 262.0
-margin_bottom = 283.0
-rect_rotation = -90.0
-rect_scale = Vector2( 1.6, 1.6 )
+margin_left = 304.0
+margin_top = 371.0
+margin_right = 506.0
+margin_bottom = 621.0
+rect_scale = Vector2( 4, 4 )
 rect_pivot_offset = Vector2( 101, 125 )
 texture = ExtResource( 1 )
+stretch_mode = 1
 script = ExtResource( 2 )
 
 [node name="Question Text" type="RichTextLabel" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 30.375
-margin_top = 5.00001
-margin_right = 930.375
-margin_bottom = 125.0
+margin_left = 30.25
+margin_top = 6.0
+margin_right = 930.25
+margin_bottom = 126.0
 rect_scale = Vector2( 0.15, 0.15 )
 custom_fonts/normal_font = ExtResource( 5 )
 text = "Question 01"

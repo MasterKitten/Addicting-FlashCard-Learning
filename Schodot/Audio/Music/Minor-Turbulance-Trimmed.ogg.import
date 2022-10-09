@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Minor-Turbulance-Trimmed.ogg-5a49f47bdc7579b352df0c9517684f13.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/Minor-Turbulance-Trimmed.ogg"
+dest_files=[ "res://.import/Minor-Turbulance-Trimmed.ogg-5a49f47bdc7579b352df0c9517684f13.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
