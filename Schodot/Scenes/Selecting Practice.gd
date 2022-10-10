@@ -6,6 +6,7 @@ export (Array, String) var Groups
 
 export (Array, String) var SelectedAnswers
 export (Array, String) var SelectedQuestions
+var ShowAnswer
 
 export (PackedScene) var Butt
 
@@ -19,6 +20,7 @@ func Populate(datas):
 	Groups = datas.Groups
 	Answers = datas.Answers
 	Questions = datas.Questions
+	ShowAnswer = datas.ShowAnswer
 	var i = 0
 	while i < Groups.size():
 		var Item = Butt.instance()
@@ -55,6 +57,7 @@ func ItemSpawn(Instance):
 	get_parent().add_child(Item)
 	Item.SelectedQuestions = SelectedQuestions
 	Item.SelectedAnswers = SelectedAnswers
+	Item.ShowAnswers = ShowAnswer
 	Item.UpdateText()
 	GoToGame()
 

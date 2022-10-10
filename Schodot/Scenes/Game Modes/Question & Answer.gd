@@ -1,5 +1,6 @@
 extends TextureRect
 
+var ShowAnswers = false
 var SelectedQuestions = []
 var SelectedAnswers = []
 var ShuffledAnswers = []
@@ -39,11 +40,10 @@ func _physics_process(delta):
 		TheProgressBar.modulate.r = 1
 		StartTimer = false
 		timer = 0
-		if (SelectedAnswers.size() == 0 && SelectedQuestions.size() == 0):
+		if SelectedAnswers.size() == 0 && SelectedQuestions.size() == 0:
 			get_node("AnimationPlayer").play("Fade")
 		else:
-			if timer == 1:
-				UpdateText()
+			UpdateText()
 	
 	if get_node("Results").visible == true:
 		get_node("Results/ProgressBar").value += (delta * 1.5)
@@ -89,6 +89,8 @@ func _on_Answer_pressed(Integer):
 		get_node("AudioIncorrect").play()
 		StartTimer = true
 		WrongAnswers += 1
+	if ShowAnswers == true:
+		print(SelectedAnswers[0])
 	SelectedAnswers.remove(0)
 	SelectedQuestions.remove(0)
 

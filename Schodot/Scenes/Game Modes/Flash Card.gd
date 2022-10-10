@@ -2,6 +2,7 @@ extends TextureRect
 
 var SelectedQuestions = []
 var SelectedAnswers = []
+var ShowAnswers = false #Leave this variable alone
 
 var Flipped = false
 var CurrentQuestion = 0
