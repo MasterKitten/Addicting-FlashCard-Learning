@@ -11,7 +11,10 @@ var StartTimer = false
 var timer = 0
 
 var TheBarValue = 0
-var Correct = false
+
+var CorrectAnswers = 0
+var WrongAnswers = 0
+var TotalAnswers = 0
 
 onready var TheProgressBar = get_node("ProgressBar")
 onready var CorrectScreen = get_node("Win")
@@ -21,14 +24,14 @@ func _physics_process(delta):
 	if StartTimer == true:
 		timer += delta
 		TheProgressBar.value += delta
-		if Correct == true:
+		if get_node("Win").visible == true:
 			TheProgressBar.modulate.b = RNG.randf()
 			TheProgressBar.modulate.g = RNG.randf()
 			TheProgressBar.modulate.r = RNG.randf()
 		
 	if TheProgressBar.value >= TheBarValue:
 		TheProgressBar.value = TheBarValue
-	if timer >= 1:
+	if timer >= 0.9:
 		get_node("Win").visible = false
 		get_node("Lose").visible = false
 		TheProgressBar.modulate.b = 1
@@ -37,10 +40,15 @@ func _physics_process(delta):
 		StartTimer = false
 		timer = 0
 		if (SelectedAnswers.size() == 0 && SelectedQuestions.size() == 0):
-			get_parent().get_node("Selecting Practice").BackToLevel()
-			queue_free()
+			get_node("AnimationPlayer").play("Fade")
 		else:
-			UpdateText()
+			if timer == 1:
+				UpdateText()
+	
+	if get_node("Results").visible == true:
+		get_node("Results/ProgressBar").value += (delta * 1.5)
+	if get_node("Results/ProgressBar").value >= CorrectAnswers:
+		get_node("Results/ProgressBar").value = CorrectAnswers
 
 func UpdateText():
 	RNG.randomize()
@@ -49,6 +57,9 @@ func UpdateText():
 		ShuffledAnswers.append(SelectedAnswers[i])
 		i += 1
 		TheProgressBar.max_value = SelectedAnswers.size()
+		#Results screen stuff
+		TotalAnswers = SelectedAnswers.size()
+		get_node("Results/ProgressBar").max_value = SelectedAnswers.size()
 	Stop = true
 	ShuffledAnswers.shuffle()
 	get_node("Question Text").text = SelectedQuestions[0]
@@ -71,12 +82,23 @@ func _on_Answer_pressed(Integer):
 	if get_node("Answer 0" + str(Integer)).text == SelectedAnswers[0]:
 		get_node("Win").visible = true
 		get_node("AudioCorrect").play()
-		Correct = true
 		StartTimer = true
+		CorrectAnswers += 1
 	if get_node("Answer 0" + str(Integer)).text != SelectedAnswers[0]:
 		get_node("Lose").visible = true
 		get_node("AudioIncorrect").play()
-		Correct = false
 		StartTimer = true
+		WrongAnswers += 1
 	SelectedAnswers.remove(0)
 	SelectedQuestions.remove(0)
+
+func Finality():
+	get_node("Results").visible = true
+	get_node("Results/Correct").text = "Correct: " + str(CorrectAnswers)
+	get_node("Results/Wrong").text = "Wrong: " + str(WrongAnswers)
+	get_node("Results/Progress2").text = str(CorrectAnswers) + " / " + str(TotalAnswers)
+	get_node("Music").volume_db = -30
+
+func _on_Continue_pressed():
+	get_parent().get_node("Selecting Practice").BackToLevel()
+	queue_free()

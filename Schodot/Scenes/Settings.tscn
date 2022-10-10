@@ -26,7 +26,7 @@ margin_right = 200.0
 margin_bottom = 70.0
 max_value = 1.0
 step = 0.01
-value = 1.0
+value = 0.9
 
 [node name="Master" type="Label" parent="."]
 margin_left = 30.0
@@ -42,7 +42,23 @@ margin_right = 200.0
 margin_bottom = 70.0
 max_value = 1.0
 step = 0.01
-value = 1.0
+value = 0.9
+
+[node name="Sound" type="Label" parent="."]
+margin_left = 245.0
+margin_top = 26.0
+margin_right = 444.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 2 )
+text = "Sound Bar"
+
+[node name="Sound_Bar" type="HSlider" parent="Sound"]
+margin_top = 54.0
+margin_right = 200.0
+margin_bottom = 70.0
+max_value = 1.0
+step = 0.01
+value = 0.9
 
 [node name="Music2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
@@ -52,6 +68,7 @@ bus = "Music"
 
 [node name="AudioTest" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+bus = "Sound"
 
 [node name="Button" type="Button" parent="."]
 margin_left = 705.0
@@ -62,6 +79,7 @@ custom_fonts/font = ExtResource( 5 )
 text = "Back"
 
 [connection signal="value_changed" from="Music/Music_Bar" to="." method="_on_Music_Bar_value_changed"]
-[connection signal="drag_ended" from="Master/Master_Bar" to="." method="_on_Master_Bar_drag_ended"]
 [connection signal="value_changed" from="Master/Master_Bar" to="." method="_on_Master_Bar_value_changed"]
+[connection signal="drag_ended" from="Sound/Sound_Bar" to="." method="_on_Sound_Bar_drag_ended"]
+[connection signal="value_changed" from="Sound/Sound_Bar" to="." method="_on_Sound_Bar_value_changed"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
