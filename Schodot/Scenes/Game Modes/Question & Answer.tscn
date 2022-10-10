@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Images/Lined.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Game Modes/Question & Answer.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Font/Rawengulksans-8g8B.otf" type="DynamicFontData" id=6]
 [ext_resource path="res://Audio/Music/The-Agency-Heist-trimmed.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Font/Smaller_Rawengulksans.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Extra Scenes/HelpMe.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -98,6 +99,7 @@ rect_pivot_offset = Vector2( 101, 125 )
 texture = ExtResource( 1 )
 stretch_mode = 1
 script = ExtResource( 2 )
+HelpMe = ExtResource( 9 )
 
 [node name="Question Text" type="RichTextLabel" parent="."]
 modulate = Color( 0, 0, 0, 1 )

@@ -7,6 +7,7 @@ var ShowAnswers = false
 var timer = 0
 var StartTimer = false
 
+# Display stuff before going back to not displaying anything
 func _process(delta):
 	if StartTimer == true:
 		timer += delta
@@ -27,7 +28,9 @@ func UpdateText():
 	get_node("Answer").text = ""
 
 func _on_LineEdit_text_entered(new_text):
+	# This one line stops bugs.
 	if get_node("LineEdit").editable == true:
+		# If correct, good. Otherwise, no. Also show wrong answer when applicable.
 		if SelectedAnswers[0].to_lower() == new_text.to_lower():
 			get_node("Correct?").text = "Correct!"
 		else:

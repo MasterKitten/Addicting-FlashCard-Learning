@@ -318,6 +318,7 @@ func _on_Change_Group_pressed():
 	get_node("Selected Group").text = "Selected Group: " + Groups[AfterGroup - 1]
 	get_node("Selected Items").text = "Selected Input: "
 
+# Changes the item of the selected group.
 func _on_Change_Item_pressed():
 	if Nothing():
 		return
@@ -342,7 +343,7 @@ func _on_Change_Item_pressed():
 		
 		get_node("Movement Dialog/ItemThing").text = ""
 		get_node("Movement Dialog/ToItemThing").text = ""
-
+# Buttons are all below!
 func _on_GroupThing_text_changed(new_text):
 	BeforeGroup = int(new_text)
 

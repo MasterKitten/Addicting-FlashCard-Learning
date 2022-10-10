@@ -39,7 +39,7 @@ func _on_Flash_pressed():
 func _on_Learning_pressed():
 	ItemSpawn(TypingScene)
 
-# Seperate function to stop broken code
+# Seperate function to save on code
 func ItemSpawn(Instance):
 	var i = 0
 	SelectedAnswers = []
@@ -53,6 +53,7 @@ func ItemSpawn(Instance):
 		var Thing = Answers[ItemToDo][i]
 		SelectedAnswers.append(Thing)
 		i += 1
+	# Create a instance of a game that the player selected
 	var Item = Instance.instance()
 	get_parent().add_child(Item)
 	Item.SelectedQuestions = SelectedQuestions
@@ -61,6 +62,7 @@ func ItemSpawn(Instance):
 	Item.UpdateText()
 	GoToGame()
 
+# Pop a window with game modes.
 func Popups(ItemThing):
 	ItemToDo = ItemThing
 	get_node("WindowDialog").popup()

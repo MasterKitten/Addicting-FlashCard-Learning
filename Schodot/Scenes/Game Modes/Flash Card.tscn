@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Images/Flash Card.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Game Modes/Flash Card.gd" type="Script" id=2]
@@ -49,13 +49,92 @@ tracks/2/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "LastCard"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -691, 268 ), Vector2( 0, 150 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -81.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "NextCard"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1295, -509 ), Vector2( 0, 130 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 86.381, 0.0 ]
+}
+
 [sub_resource type="Animation" id=2]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 130 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [node name="Flash Card" type="TextureRect"]
-margin_left = 2.0
 margin_top = 130.0
-margin_right = 358.0
+margin_right = 356.0
 margin_bottom = 330.0
 rect_scale = Vector2( 2.25, 2.5 )
 texture = ExtResource( 1 )
@@ -89,6 +168,8 @@ margin_bottom = 200.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Flip = SubResource( 1 )
+anims/LastCard = SubResource( 4 )
+anims/NextCard = SubResource( 3 )
 anims/RESET = SubResource( 2 )
 
 [node name="Next" type="Button" parent="."]

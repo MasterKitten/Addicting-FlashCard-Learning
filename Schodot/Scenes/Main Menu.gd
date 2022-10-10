@@ -1,5 +1,5 @@
 extends TextureRect
-
+# Buttons
 func _on_Play_pressed():
 	get_node("AnimationPlayer").play("Slide")
 
