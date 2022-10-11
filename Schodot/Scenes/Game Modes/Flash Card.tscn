@@ -1,0 +1,198 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Images/Flash Card.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Game Modes/Flash Card.gd" type="Script" id=2]
+[ext_resource path="res://Font/Rawengulksans.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Font/Smaller_Rawengulksans.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Audio/Music/Minor-Turbulance-Trimmed.ogg" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Flip"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2.25, 2.5 ), Vector2( 1e-05, 2.5 ), Vector2( 2.25, 2.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 130 ), Vector2( 400, 130 ), Vector2( 2, 130 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "UpdateText"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "LastCard"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -691, 268 ), Vector2( 0, 150 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -81.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "NextCard"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1295, -509 ), Vector2( 0, 130 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 86.381, 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 130 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[node name="Flash Card" type="TextureRect"]
+margin_top = 130.0
+margin_right = 356.0
+margin_bottom = 330.0
+rect_scale = Vector2( 2.25, 2.5 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 1.05264
+margin_top = 18.75
+margin_right = 357.053
+margin_bottom = 175.75
+custom_fonts/font = ExtResource( 3 )
+text = "Test"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+margin_right = 356.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 4 )
+text = "Question:"
+align = 1
+valign = 1
+
+[node name="Flip" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 356.0
+margin_bottom = 200.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Flip = SubResource( 1 )
+anims/LastCard = SubResource( 4 )
+anims/NextCard = SubResource( 3 )
+anims/RESET = SubResource( 2 )
+
+[node name="Next" type="Button" parent="."]
+margin_left = 303.111
+margin_top = 170.8
+margin_right = 345.111
+margin_bottom = 190.8
+text = "Next"
+
+[node name="Back" type="Button" parent="."]
+visible = false
+margin_left = 12.8889
+margin_top = 169.6
+margin_right = 54.8889
+margin_bottom = 189.6
+text = "Back"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -5.0
+autoplay = true
+bus = "Music"
+
+[connection signal="pressed" from="Flip" to="." method="_on_Flip_pressed"]
+[connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

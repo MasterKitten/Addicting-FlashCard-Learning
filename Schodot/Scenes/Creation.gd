@@ -10,6 +10,7 @@ onready var Group = get_node("Groups/Groups")
 export (Array, Array, String) var Questions
 export (Array, Array, String) var Answers
 export (Array, String) var Groups
+var ShowAnswer = false
 
 # Instance variables.
 export (PackedScene) var Butt
@@ -32,6 +33,7 @@ func save():
 		"Questions" : Questions,
 		"Answers" : Answers,
 		"Groups" : Groups,
+		"ShowAnswer" : ShowAnswer,
 	}
 	return save_dict
 
@@ -78,24 +80,18 @@ func load_game():
 	# What does this do? When loading another file, we have to remove EVERYTHING!
 	var Answerss = AnswerGroup.get_children()
 	var i = 0
-	var x = 0
-	while x < Answers.size():
-		while i != Answers[x].size():
-			Answers[x].remove(i)
-			i = 0
-		x += 1
+	while i < Answers.size():
+		Answers.remove(i)
+		i = 0
 	i = 0
 	while i < Answerss.size():
 		Answerss[i].queue_free()
 		i += 1
 	var Questionss = QuestionGroup.get_children()
 	i = 0
-	x = 0
-	while x < Questions.size():
-		while i != Questions[x].size():
-			Questions[x].remove(i)
-			i = 0
-		x += 1
+	while i < Questions.size():
+		Questions.remove(i)
+		i = 0
 	i = 0
 	while i < Questionss.size():
 		Questionss[i].queue_free()
@@ -104,7 +100,7 @@ func load_game():
 	i = 0
 	while i != Groups.size():
 		Groups.remove(i)
-		i += 1
+		i = 0
 	i = 0
 	while i < Groupss.size():
 		Groupss[i].queue_free()
@@ -144,6 +140,11 @@ func load_game():
 			i += 1
 		SelectedGroup += 1
 	SelectedGroup = -1
+	# ShowAnswer loading
+	if datas.ShowAnswer == true:
+		get_node("Saving Stuffs/ShowAnswer").pressed = true
+	else:
+		get_node("Saving Stuffs/ShowAnswer").pressed = false
 	
 	# Changing the text
 	get_node("Selected Group").text = "Done! Select A Group!"
@@ -317,6 +318,7 @@ func _on_Change_Group_pressed():
 	get_node("Selected Group").text = "Selected Group: " + Groups[AfterGroup - 1]
 	get_node("Selected Items").text = "Selected Input: "
 
+# Changes the item of the selected group.
 func _on_Change_Item_pressed():
 	if Nothing():
 		return
@@ -341,7 +343,7 @@ func _on_Change_Item_pressed():
 		
 		get_node("Movement Dialog/ItemThing").text = ""
 		get_node("Movement Dialog/ToItemThing").text = ""
-
+# Buttons are all below!
 func _on_GroupThing_text_changed(new_text):
 	BeforeGroup = int(new_text)
 
@@ -356,3 +358,6 @@ func _on_ToItemThing_text_changed(new_text):
 
 func _on_Checking_toggled(button_pressed):
 	SaveToDev = button_pressed
+
+func _on_ShowAnswer_toggled(button_pressed):
+	ShowAnswer = button_pressed

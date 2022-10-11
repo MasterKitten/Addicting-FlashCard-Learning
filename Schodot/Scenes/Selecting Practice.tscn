@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Images/Graph.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Selecting Practice.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Scenes/Game Modes/Question & Answer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Font/Rawengulksans.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Audio/Music/Duck-and-Cover-trimmed.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Scenes/Game Modes/Flash Card.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Game Modes/Typing.tscn" type="PackedScene" id=8]
 
 [node name="Selecting Practice" type="TextureRect"]
 margin_left = 800.0
@@ -17,7 +19,9 @@ rect_scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 Butt = ExtResource( 3 )
-TheScened = ExtResource( 4 )
+QuizScene = ExtResource( 4 )
+FlashScene = ExtResource( 7 )
+TypingScene = ExtResource( 8 )
 
 [node name="HFlowContainer" type="HFlowContainer" parent="."]
 margin_left = 1.52588e-05
@@ -39,6 +43,7 @@ custom_fonts/font = ExtResource( 5 )
 text = "Back"
 
 [node name="WindowDialog" type="WindowDialog" parent="."]
+visible = true
 margin_left = 40.4
 margin_top = 127.2
 margin_right = 215.4
@@ -47,10 +52,24 @@ window_title = "Gamemode"
 
 [node name="Quiz" type="Button" parent="WindowDialog"]
 margin_left = 43.0
-margin_top = 14.0
+margin_top = 10.0
 margin_right = 125.0
-margin_bottom = 34.0
+margin_bottom = 30.0
 text = "Quiz Mode"
+
+[node name="Flash" type="Button" parent="WindowDialog"]
+margin_left = 43.0
+margin_top = 40.0
+margin_right = 125.0
+margin_bottom = 60.0
+text = "Flash Cards"
+
+[node name="Learning" type="Button" parent="WindowDialog"]
+margin_left = 39.0
+margin_top = 70.0
+margin_right = 131.0
+margin_bottom = 90.0
+text = "Typing Mode"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
@@ -60,3 +79,5 @@ bus = "Music"
 
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="WindowDialog/Quiz" to="." method="_on_Quiz_pressed"]
+[connection signal="pressed" from="WindowDialog/Flash" to="." method="_on_Flash_pressed"]
+[connection signal="pressed" from="WindowDialog/Learning" to="." method="_on_Learning_pressed"]

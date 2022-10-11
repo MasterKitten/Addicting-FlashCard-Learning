@@ -17,6 +17,13 @@ Labell = ExtResource( 3 )
 margin_right = 40.0
 margin_bottom = 40.0
 
+[node name="ShowAnswer" type="CheckBox" parent="Saving Stuffs"]
+margin_left = 336.0
+margin_top = 590.0
+margin_right = 463.0
+margin_bottom = 614.0
+text = "Show Answer"
+
 [node name="Checking" type="CheckBox" parent="Saving Stuffs"]
 margin_left = 336.0
 margin_top = 615.0
@@ -258,6 +265,7 @@ volume_db = -5.0
 autoplay = true
 bus = "Music"
 
+[connection signal="toggled" from="Saving Stuffs/ShowAnswer" to="." method="_on_ShowAnswer_toggled"]
 [connection signal="toggled" from="Saving Stuffs/Checking" to="." method="_on_Checking_toggled"]
 [connection signal="pressed" from="Saving Stuffs/Save" to="." method="_on_Save_pressed"]
 [connection signal="pressed" from="Saving Stuffs/Load" to="." method="_on_Load_pressed"]
