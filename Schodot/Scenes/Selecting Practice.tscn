@@ -33,17 +33,16 @@ rect_scale = Vector2( 0.5, 0.5 )
 rect_clip_content = true
 
 [node name="Quit" type="Button" parent="."]
-margin_left = 257.6
+margin_left = 255.0
 margin_top = 53.6
-margin_right = 299.6
-margin_bottom = 73.6
+margin_right = 362.0
+margin_bottom = 114.6
 rect_rotation = -90.0
 rect_scale = Vector2( 0.35, 0.35 )
 custom_fonts/font = ExtResource( 5 )
 text = "Back"
 
 [node name="WindowDialog" type="WindowDialog" parent="."]
-visible = true
 margin_left = 40.4
 margin_top = 127.2
 margin_right = 215.4
@@ -84,7 +83,40 @@ volume_db = -5.0
 autoplay = true
 bus = "Music"
 
+[node name="Quiz All" type="Button" parent="."]
+margin_left = 255.0
+margin_top = 310.0
+margin_right = 404.0
+margin_bottom = 371.0
+rect_rotation = -90.0
+rect_scale = Vector2( 0.35, 0.35 )
+custom_fonts/font = ExtResource( 5 )
+text = "Quiz All"
+
+[node name="Flash Card All" type="Button" parent="."]
+margin_left = 255.0
+margin_top = 250.0
+margin_right = 533.0
+margin_bottom = 311.0
+rect_rotation = -90.0
+rect_scale = Vector2( 0.35, 0.35 )
+custom_fonts/font = ExtResource( 5 )
+text = "Flash Card All"
+
+[node name="Write All" type="Button" parent="."]
+margin_left = 255.0
+margin_top = 145.0
+margin_right = 362.0
+margin_bottom = 206.0
+rect_rotation = -90.0
+rect_scale = Vector2( 0.35, 0.35 )
+custom_fonts/font = ExtResource( 5 )
+text = "Write All"
+
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="WindowDialog/Quiz" to="." method="_on_Quiz_pressed"]
 [connection signal="pressed" from="WindowDialog/Flash" to="." method="_on_Flash_pressed"]
 [connection signal="pressed" from="WindowDialog/Learning" to="." method="_on_Learning_pressed"]
+[connection signal="pressed" from="Quiz All" to="." method="_on_Quiz_All_pressed"]
+[connection signal="pressed" from="Flash Card All" to="." method="_on_Flash_Card_All_pressed"]
+[connection signal="pressed" from="Write All" to="." method="_on_Write_All_pressed"]
