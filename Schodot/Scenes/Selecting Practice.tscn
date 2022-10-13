@@ -71,6 +71,13 @@ margin_right = 131.0
 margin_bottom = 90.0
 text = "Typing Mode"
 
+[node name="CheckBox" type="CheckBox" parent="WindowDialog"]
+margin_left = 33.0
+margin_top = 180.0
+margin_right = 143.0
+margin_bottom = 204.0
+text = "Swap Q & A"
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -5.0

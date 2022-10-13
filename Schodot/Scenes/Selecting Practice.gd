@@ -15,6 +15,7 @@ export (PackedScene) var FlashScene
 export (PackedScene) var TypingScene
 
 var ItemToDo = 0
+var SwapQA = false
 
 func Populate(datas):
 	Groups = datas.Groups
@@ -44,15 +45,27 @@ func ItemSpawn(Instance):
 	var i = 0
 	SelectedAnswers = []
 	SelectedQuestions = []
-	while i < Questions[ItemToDo].size():
-		var Thing = Questions[ItemToDo][i]
-		SelectedQuestions.append(Thing)
-		i += 1
-	i = 0
-	while i < Answers[ItemToDo].size():
-		var Thing = Answers[ItemToDo][i]
-		SelectedAnswers.append(Thing)
-		i += 1
+	if get_node("WindowDialog/CheckBox").pressed == false:
+		while i < Questions[ItemToDo].size():
+			var Thing = Questions[ItemToDo][i]
+			SelectedQuestions.append(Thing)
+			i += 1
+		i = 0
+		while i < Answers[ItemToDo].size():
+			var Thing = Answers[ItemToDo][i]
+			SelectedAnswers.append(Thing)
+			i += 1
+	else:
+		while i < Questions[ItemToDo].size():
+			var Thing = Answers[ItemToDo][i]
+			SelectedQuestions.append(Thing)
+			i += 1
+		i = 0
+		while i < Answers[ItemToDo].size():
+			var Thing = Questions[ItemToDo][i]
+			SelectedAnswers.append(Thing)
+			i += 1
+		
 	# Create a instance of a game that the player selected
 	var Item = Instance.instance()
 	get_parent().add_child(Item)
