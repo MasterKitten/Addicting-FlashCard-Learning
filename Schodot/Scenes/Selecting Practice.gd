@@ -13,6 +13,7 @@ export (PackedScene) var Butt
 export (PackedScene) var QuizScene
 export (PackedScene) var FlashScene
 export (PackedScene) var TypingScene
+export (PackedScene) var LearningScene
 
 var ItemToDo = 0
 
@@ -36,8 +37,11 @@ func _on_Quiz_pressed():
 func _on_Flash_pressed():
 	ItemSpawn(FlashScene)
 
-func _on_Learning_pressed():
+func _on_Typing_pressed():
 	ItemSpawn(TypingScene)
+
+func _on_Learning_pressed():
+	ItemSpawn(LearningScene)
 
 # Seperate function to save on code
 func ItemSpawn(Instance):

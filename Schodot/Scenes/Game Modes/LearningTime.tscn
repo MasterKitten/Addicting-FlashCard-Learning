@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Font/Rawengulksans.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/Game Modes/LearningTime.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Game Modes/Flash Card.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Game Modes/Question & Answer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Game Modes/Typing.tscn" type="PackedScene" id=5]
+
+[node name="LearningTime" type="TextureRect"]
+margin_right = 800.0
+margin_bottom = 800.0
+script = ExtResource( 2 )
+Quiz = ExtResource( 4 )
+Flash = ExtResource( 3 )
+typing = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 289.0
+margin_top = 272.0
+margin_right = 510.0
+margin_bottom = 327.0
+custom_fonts/font = ExtResource( 1 )
+text = "Round: test"
+
+[node name="Begin" type="Button" parent="."]
+margin_left = 490.0
+margin_top = 458.0
+margin_right = 617.0
+margin_bottom = 519.0
+custom_fonts/font = ExtResource( 1 )
+text = "Begin!"
+
+[connection signal="pressed" from="Begin" to="." method="_on_Begin_pressed"]
