@@ -15,6 +15,10 @@ var i = 0
 var Music = AudioServer.get_bus_index("Music")
 var AudioLevel = db2linear(AudioServer.get_bus_volume_db(Music))
 
+func _process(_delta):
+	if !get_node("LearningTime").is_playing():
+		get_node("LearningTime").play("Blow-up")
+
 func Commanding():
 	AudioServer.set_bus_volume_db(Music, linear2db(0.20))
 	var RNG = RandomNumberGenerator.new()
@@ -28,7 +32,7 @@ func Commanding():
 
 func _on_Continue_pressed():
 	if i < AmountOfSaying:
-		Commanding()
+		get_node("TeacherAnim").play("Change-Thing")
 		i += 1
 	else:
 		# Go back to the game.

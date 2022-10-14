@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Images/Graph.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Selecting Practice.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Audio/Music/Duck-and-Cover-trimmed.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Scenes/Game Modes/Flash Card.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Game Modes/Typing.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Game Modes/LearningTime.tscn" type="PackedScene" id=9]
 
 [node name="Selecting Practice" type="TextureRect"]
 margin_left = 800.0
@@ -22,6 +23,7 @@ Butt = ExtResource( 3 )
 QuizScene = ExtResource( 4 )
 FlashScene = ExtResource( 7 )
 TypingScene = ExtResource( 8 )
+LearningScene = ExtResource( 9 )
 
 [node name="HFlowContainer" type="HFlowContainer" parent="."]
 margin_left = 1.52588e-05
@@ -33,17 +35,16 @@ rect_scale = Vector2( 0.5, 0.5 )
 rect_clip_content = true
 
 [node name="Quit" type="Button" parent="."]
-margin_left = 257.6
+margin_left = 255.0
 margin_top = 53.6
-margin_right = 299.6
-margin_bottom = 73.6
+margin_right = 362.0
+margin_bottom = 114.6
 rect_rotation = -90.0
 rect_scale = Vector2( 0.35, 0.35 )
 custom_fonts/font = ExtResource( 5 )
 text = "Back"
 
 [node name="WindowDialog" type="WindowDialog" parent="."]
-visible = true
 margin_left = 40.4
 margin_top = 127.2
 margin_right = 215.4
@@ -64,12 +65,26 @@ margin_right = 125.0
 margin_bottom = 60.0
 text = "Flash Cards"
 
-[node name="Learning" type="Button" parent="WindowDialog"]
+[node name="Typing" type="Button" parent="WindowDialog"]
 margin_left = 39.0
 margin_top = 70.0
 margin_right = 131.0
 margin_bottom = 90.0
 text = "Typing Mode"
+
+[node name="Learning" type="Button" parent="WindowDialog"]
+margin_left = 33.0
+margin_top = 100.0
+margin_right = 139.0
+margin_bottom = 120.0
+text = "Learning Mode"
+
+[node name="CheckBox" type="CheckBox" parent="WindowDialog"]
+margin_left = 33.0
+margin_top = 180.0
+margin_right = 143.0
+margin_bottom = 204.0
+text = "Swap Q & A"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
@@ -77,7 +92,41 @@ volume_db = -5.0
 autoplay = true
 bus = "Music"
 
+[node name="Quiz All" type="Button" parent="."]
+margin_left = 255.0
+margin_top = 310.0
+margin_right = 404.0
+margin_bottom = 371.0
+rect_rotation = -90.0
+rect_scale = Vector2( 0.35, 0.35 )
+custom_fonts/font = ExtResource( 5 )
+text = "Quiz All"
+
+[node name="Flash Card All" type="Button" parent="."]
+margin_left = 255.0
+margin_top = 250.0
+margin_right = 533.0
+margin_bottom = 311.0
+rect_rotation = -90.0
+rect_scale = Vector2( 0.35, 0.35 )
+custom_fonts/font = ExtResource( 5 )
+text = "Flash Card All"
+
+[node name="Write All" type="Button" parent="."]
+margin_left = 255.0
+margin_top = 145.0
+margin_right = 362.0
+margin_bottom = 206.0
+rect_rotation = -90.0
+rect_scale = Vector2( 0.35, 0.35 )
+custom_fonts/font = ExtResource( 5 )
+text = "Write All"
+
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="WindowDialog/Quiz" to="." method="_on_Quiz_pressed"]
 [connection signal="pressed" from="WindowDialog/Flash" to="." method="_on_Flash_pressed"]
+[connection signal="pressed" from="WindowDialog/Typing" to="." method="_on_Typing_pressed"]
 [connection signal="pressed" from="WindowDialog/Learning" to="." method="_on_Learning_pressed"]
+[connection signal="pressed" from="Quiz All" to="." method="_on_Quiz_All_pressed"]
+[connection signal="pressed" from="Flash Card All" to="." method="_on_Flash_Card_All_pressed"]
+[connection signal="pressed" from="Write All" to="." method="_on_Write_All_pressed"]

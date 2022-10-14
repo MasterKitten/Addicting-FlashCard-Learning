@@ -1,9 +1,96 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Images/Learning-Area.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Game Modes/Typing.gd" type="Script" id=2]
 [ext_resource path="res://Font/Rawengulksans.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Audio/Music/Top-Gear-Bordeaux.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Images/GameMode Images/Check Mark.png" type="Texture" id=5]
+[ext_resource path="res://Images/GameMode Images/X Mark.png" type="Texture" id=6]
+[ext_resource path="res://Audio/AudioCorrect.wav" type="AudioStream" id=7]
+[ext_resource path="res://Audio/AudioIncorrect.wav" type="AudioStream" id=8]
+[ext_resource path="res://Images/Box.png" type="Texture" id=9]
+
+[sub_resource type="Animation" id=1]
+length = 2.5
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Correct\?:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -800, -0.25, 0, 0.25, 0, -0.983999, -0.85, 1.728, 0.8, 3.456, 800, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Correct\?:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 400, -0.25, 0, 0.25, 0, 400, -0.25, 0, 0.25, 0, 400, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Answer:rect_position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -800, -0.25, 0, 0.25, 0, 0.744001, -0.95, -38.016, 1, 44.928, 800, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.25, 2.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Answer:rect_position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 500, -0.25, 0, 0.25, 0, 500, -0.25, 0, 0.25, 0, 500, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.25, 2.5 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Mark:rect_rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.1, 2.49 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1460.0, 1460.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Mark:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.1, 2.49, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -334, 250 ), Vector2( 660, 359 ), Vector2( 660, 359 ), Vector2( 836, 379 ) ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "AudioPlay"
+} ]
+}
 
 [node name="Typing" type="TextureRect"]
 margin_right = 800.0
@@ -11,6 +98,8 @@ margin_bottom = 857.0
 texture = ExtResource( 1 )
 expand = true
 script = ExtResource( 2 )
+Check = ExtResource( 5 )
+Err = ExtResource( 6 )
 
 [node name="Question" type="Label" parent="."]
 margin_top = 37.0
@@ -31,26 +120,59 @@ custom_fonts/font = ExtResource( 3 )
 placeholder_text = "Enter Your Answer Here."
 
 [node name="Correct\?" type="Label" parent="."]
+margin_left = -800.0
 margin_top = 400.0
-margin_right = 800.0
+margin_right = 0.00213623
 margin_bottom = 500.0
 custom_fonts/font = ExtResource( 3 )
 align = 1
 valign = 1
 autowrap = true
 
-[node name="Answer" type="Label" parent="."]
-margin_top = 500.0
+[node name="TextureRect" type="TextureRect" parent="Correct\?"]
+modulate = Color( 0, 0, 0, 1 )
 margin_right = 800.0
+margin_bottom = 100.0
+texture = ExtResource( 9 )
+expand = true
+
+[node name="Answer" type="Label" parent="."]
+margin_left = -800.0
+margin_top = 500.0
 margin_bottom = 700.0
 custom_fonts/font = ExtResource( 3 )
 align = 1
 valign = 1
 autowrap = true
 
+[node name="TextureRect" type="TextureRect" parent="Answer"]
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 800.0
+margin_bottom = 200.0
+texture = ExtResource( 9 )
+expand = true
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -5.0
 autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+
+[node name="Mark" type="TextureRect" parent="."]
+margin_left = -334.0
+margin_top = 250.0
+margin_right = -234.0
+margin_bottom = 350.0
+rect_pivot_offset = Vector2( 50, 50 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="Ding" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="Wrong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 
 [connection signal="text_entered" from="LineEdit" to="." method="_on_LineEdit_text_entered"]

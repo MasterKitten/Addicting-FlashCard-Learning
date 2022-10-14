@@ -1,0 +1,45 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Font/Rawengulksans.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/Game Modes/LearningTime.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Game Modes/Flash Card.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Game Modes/Question & Answer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Game Modes/Typing.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Images/GameMode Images/Round1.png" type="Texture" id=6]
+[ext_resource path="res://Images/GameMode Images/Round2.png" type="Texture" id=7]
+[ext_resource path="res://Images/GameMode Images/Round3.png" type="Texture" id=8]
+[ext_resource path="res://Audio/Music/Heist-Successful-Trimmed.ogg" type="AudioStream" id=9]
+
+[node name="LearningTime" type="TextureRect"]
+margin_right = 800.0
+margin_bottom = 800.0
+texture = ExtResource( 6 )
+expand = true
+script = ExtResource( 2 )
+Quiz = ExtResource( 4 )
+Flash = ExtResource( 3 )
+typing = ExtResource( 5 )
+RoundTextures = [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 301.0
+margin_top = 344.0
+margin_right = 522.0
+margin_bottom = 399.0
+custom_fonts/font = ExtResource( 1 )
+text = "Round: test"
+
+[node name="Begin" type="Button" parent="."]
+margin_left = 352.0
+margin_top = 675.0
+margin_right = 479.0
+margin_bottom = 736.0
+custom_fonts/font = ExtResource( 1 )
+text = "Begin!"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+autoplay = true
+bus = "Music"
+
+[connection signal="pressed" from="Begin" to="." method="_on_Begin_pressed"]
