@@ -1,4 +1,4 @@
-# Link: https://trello.com/b/JxCP7njE
+# Welcome to the really weird learning software!
 
 Welcome to the open source learning project!
 
