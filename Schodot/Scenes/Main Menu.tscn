@@ -83,6 +83,20 @@ custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = ExtResource( 3 )
 text = "Schodot!"
 
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.3
+margin_left = -106.329
+margin_top = 16.7744
+margin_right = 593.671
+margin_bottom = 61.7745
+rect_scale = Vector2( 0.25, 0.25 )
+rect_pivot_offset = Vector2( 30, 0 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 3 )
+text = "*Requires International Keyboard*"
+
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = 46.9166
 margin_top = 65.1009
@@ -158,24 +172,52 @@ custom_fonts/font = ExtResource( 3 )
 text = "Settings"
 align = 1
 
+[node name="ColorRect4" type="ColorRect" parent="."]
+margin_left = 39.4011
+margin_top = 208.754
+margin_right = 139.401
+margin_bottom = 228.754
+rect_scale = Vector2( 0.67, 0.67 )
+color = Color( 0.803922, 0.803922, 0.803922, 1 )
+
+[node name="About" type="Button" parent="ColorRect4"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -3.05176e-05
+margin_right = 100.0
+margin_bottom = 20.0
+text = "Settings"
+icon_align = 1
+
+[node name="Label" type="Label" parent="ColorRect4"]
+margin_right = 100.0
+margin_bottom = 20.0
+rect_scale = Vector2( 0.37, 0.37 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "About"
+align = 1
+
+[node name="About" type="RichTextLabel" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+margin_top = 25.0
+margin_right = 800.0
+margin_bottom = 725.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/normal_font = ExtResource( 3 )
+text = "		Hello dear player!
+
+ I hope you are enjoying my game!
+
+ I have made this because I don't want to pay for anything and to also help other peopel who want to study!
+
+ If this helps you, please support me or even the Github repository this is on. Heck, create files for others to use! Every little bit helps."
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
 anims/Slide = SubResource( 1 )
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.3
-margin_left = -101.459
-margin_top = 20.8782
-margin_right = 598.541
-margin_bottom = 65.8782
-rect_scale = Vector2( 0.25, 0.25 )
-rect_pivot_offset = Vector2( 30, 0 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = ExtResource( 3 )
-text = "*Requires International Keyboard*"
-
 [connection signal="pressed" from="ColorRect/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="ColorRect2/Magic" to="." method="_on_Magic_pressed"]
 [connection signal="pressed" from="ColorRect3/Setting" to="." method="_on_Setting_pressed"]
+[connection signal="pressed" from="ColorRect4/About" to="." method="_on_About_pressed"]
