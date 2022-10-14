@@ -11,6 +11,8 @@ export (PackedScene) var Quiz
 export (PackedScene) var Flash
 export (PackedScene) var typing
 
+export (Array, Texture) var RoundTextures
+
 var QuizTime = false
 var FlashTime = false
 var TypingTime = false
@@ -21,19 +23,18 @@ func _process(_delta):
 	if QuizTime == true:
 		if get_parent().get_node("Question & Answer") == null:
 			RoundNumber = 2
-			QuizTime = false
-			get_node(".").visible = true
+			UpdateText()
 	if FlashTime == true:
 		if get_parent().get_node("Flash Card") == null:
 			RoundNumber = 3
-			FlashTime = false
-			get_node(".").visible = true
+			UpdateText()
 	if TypingTime == true:
 		if get_parent().get_node("Typing") == null:
 			get_parent().get_node("Selecting Practice").BackToLevel()
 			queue_free()
 
 func _on_Begin_pressed():
+	get_node("Music").stop()
 	match RoundNumber:
 		1:
 			var Item = Quiz.instance()
@@ -62,4 +63,14 @@ func _on_Begin_pressed():
 	get_node(".").visible = false
 # Needed so the previous code doesn't break
 func UpdateText():
-	pass
+	match RoundNumber:
+		1:
+			get_node(".").texture = RoundTextures[0]
+		2:
+			get_node(".").texture = RoundTextures[1]
+			QuizTime = false
+		3:
+			get_node(".").texture = RoundTextures[2]
+			FlashTime = false
+	get_node(".").visible = true
+	get_node("Music").play()

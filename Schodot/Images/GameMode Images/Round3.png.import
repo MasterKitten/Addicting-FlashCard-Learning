@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/X Mark.png-0ede035fe8b28f9962299a1b604ff894.stex"
+path="res://.import/Round3.png-e8b54baa0f325529835ca3db56bdfb9d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/X Mark.png"
-dest_files=[ "res://.import/X Mark.png-0ede035fe8b28f9962299a1b604ff894.stex" ]
+source_file="res://Images/GameMode Images/Round3.png"
+dest_files=[ "res://.import/Round3.png-e8b54baa0f325529835ca3db56bdfb9d.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HelpMe.png-eb7b7ed745e0fd8be3bf8ea09120a23f.stex"
+path="res://.import/Check Mark.png-2b85447ef25bb0378b2ed149c04f3306.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/HelpMe.png"
-dest_files=[ "res://.import/HelpMe.png-eb7b7ed745e0fd8be3bf8ea09120a23f.stex" ]
+source_file="res://Images/GameMode Images/Check Mark.png"
+dest_files=[ "res://.import/Check Mark.png-2b85447ef25bb0378b2ed149c04f3306.stex" ]
 
 [params]
 
