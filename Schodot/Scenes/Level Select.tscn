@@ -139,15 +139,15 @@ custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = ExtResource( 3 )
 text = "Levels"
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 86.8297
-margin_top = 33.3424
-margin_right = 186.83
-margin_bottom = 53.3424
+[node name="Spanish I" type="ColorRect" parent="."]
+margin_left = 32.2362
+margin_top = 33.0193
+margin_right = 132.236
+margin_bottom = 53.0193
 rect_scale = Vector2( 0.67, 0.67 )
 color = Color( 0.803922, 0.803922, 0.803922, 1 )
 
-[node name="Spanish" type="Button" parent="ColorRect"]
+[node name="Spanish" type="Button" parent="Spanish I"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = -3.05176e-05
 margin_right = 100.0
@@ -155,13 +155,13 @@ margin_bottom = 20.0
 text = "Spanish"
 icon_align = 1
 
-[node name="Label" type="Label" parent="ColorRect"]
+[node name="Label" type="Label" parent="Spanish I"]
 margin_right = 100.0
 margin_bottom = 20.0
 rect_scale = Vector2( 0.37, 0.37 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
-text = "Spanish"
+text = "Spanish I"
 align = 1
 
 [node name="ColorRect2" type="ColorRect" parent="."]
@@ -204,6 +204,6 @@ access = 1
 anims/RESET = SubResource( 1 )
 anims/Slide = SubResource( 2 )
 
-[connection signal="pressed" from="ColorRect/Spanish" to="." method="_on_Spanish_pressed"]
+[connection signal="pressed" from="Spanish I/Spanish" to="." method="_on_Spanish_pressed"]
 [connection signal="pressed" from="ColorRect2/Select Custom" to="." method="_on_Select_Custom_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
