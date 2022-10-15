@@ -10,6 +10,7 @@ export(Texture) var Check
 export(Texture) var Err
 
 var Correct = false
+onready var SelectingPrac = get_parent().get_parent().get_node("Selecting Practice")
 
 # Display stuff before going back to not displaying anything
 func _process(delta):
@@ -29,7 +30,7 @@ func AudioPlay():
 
 func UpdateText():
 	if SelectedQuestions.size() == 0:
-		get_parent().get_node("Selecting Practice").BackToLevel()
+		SelectingPrac.BackToLevel()
 		queue_free()
 	else:
 		get_node("Question").text = SelectedQuestions[0]

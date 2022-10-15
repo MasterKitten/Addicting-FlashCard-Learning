@@ -9,6 +9,7 @@ export (Array, String) var SelectedQuestions
 var ShowAnswer
 
 export (PackedScene) var Butt
+var ItemParent
 
 export (PackedScene) var QuizScene
 export (PackedScene) var FlashScene
@@ -16,6 +17,7 @@ export (PackedScene) var TypingScene
 export (PackedScene) var LearningScene
 
 var ItemToDo = 0
+onready var SpawnHere = get_parent().get_node("Funs")
 
 func Populate(datas):
 	Groups = datas.Groups
@@ -70,13 +72,14 @@ func ItemSpawn(Instance):
 			i += 1
 		
 	# Create a instance of a game that the player selected
-	var Item = Instance.instance()
-	get_parent().add_child(Item)
-	Item.SelectedQuestions = SelectedQuestions
-	Item.SelectedAnswers = SelectedAnswers
-	Item.ShowAnswers = ShowAnswer
-	Item.UpdateText()
-	GoToGame()
+	ItemParent = Instance.instance()
+	SpawnHere.add_child(ItemParent)
+	ItemParent.visible = false
+	ItemParent.SelectedQuestions = SelectedQuestions
+	ItemParent.SelectedAnswers = SelectedAnswers
+	ItemParent.ShowAnswers = ShowAnswer
+	ItemParent.UpdateText()
+	get_node("Animator").play("FadeOut")
 
 # Pop a window with game modes.
 func Popups(ItemThing):
@@ -84,12 +87,14 @@ func Popups(ItemThing):
 	get_node("WindowDialog").popup()
 
 func GoToGame():
-	get_node("Music").stop()
 	get_node("WindowDialog").visible = false
+	get_node("Music").stop()
 	get_node(".").visible = false
+	ItemParent.visible = true
 
 func BackToLevel():
 	get_node("Music").play()
+	get_node("Animator").play("Fade")
 	get_node(".").visible = true
 
 # Go back to the main menu!
@@ -119,13 +124,14 @@ func InstanceAll(Instance):
 			i += 1
 		i = 0
 		ItemToDo += 1
-	var Item = Instance.instance()
-	get_parent().add_child(Item)
-	Item.SelectedQuestions = SelectedQuestions
-	Item.SelectedAnswers = SelectedAnswers
-	Item.ShowAnswers = ShowAnswer
-	Item.UpdateText()
-	GoToGame()
+	ItemParent = Instance.instance()
+	SpawnHere.add_child(ItemParent)
+	ItemParent.visible = false
+	ItemParent.SelectedQuestions = SelectedQuestions
+	ItemParent.SelectedAnswers = SelectedAnswers
+	ItemParent.ShowAnswers = ShowAnswer
+	ItemParent.UpdateText()
+	get_node("Animator").play("FadeOut")
 
 # Buttons to get all the grouos & do them all :D
 func _on_Quiz_All_pressed():

@@ -6,6 +6,7 @@ var SelectedQuestions = []
 var SelectedAnswers = []
 
 var RoundNumber = 1
+onready var SelectingPrac = get_parent().get_parent().get_node("Selecting Practice")
 
 export (PackedScene) var Quiz
 export (PackedScene) var Flash
@@ -30,7 +31,7 @@ func _process(_delta):
 			UpdateText()
 	if TypingTime == true:
 		if get_parent().get_node("Typing") == null:
-			get_parent().get_node("Selecting Practice").BackToLevel()
+			SelectingPrac.BackToLevel()
 			queue_free()
 
 func _on_Begin_pressed():

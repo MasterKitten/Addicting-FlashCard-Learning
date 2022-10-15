@@ -3,6 +3,7 @@ extends TextureRect
 # Variables to see if people should show their answers
 var ShowAnswers = false
 var Correcto = false
+onready var SelectingPrac = get_parent().get_parent().get_node("Selecting Practice")
 
 # Variables used to display the question & answers
 var SelectedQuestions = []
@@ -126,5 +127,5 @@ func Finality():
 
 # Go back to main menu
 func _on_Continue_pressed():
-	get_parent().get_node("Selecting Practice").BackToLevel()
+	SelectingPrac.BackToLevel()
 	queue_free()
