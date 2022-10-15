@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Images/Lined.png" type="Texture" id=1]
+[ext_resource path="res://Images/Flash Card.png" type="Texture" id=2]
+[ext_resource path="res://Font/Rawengulksans.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/Game Modes/Word Game.gd" type="Script" id=4]
+[ext_resource path="res://Extra Scenes/Button3.tscn" type="PackedScene" id=5]
+
+[node name="Word Game" type="TextureRect"]
+margin_right = 800.0
+margin_bottom = 300.0
+texture = ExtResource( 2 )
+expand = true
+script = ExtResource( 4 )
+Butt = ExtResource( 5 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_right = 800.0
+margin_bottom = 300.0
+scroll_horizontal_enabled = false
+
+[node name="Container" type="HFlowContainer" parent="ScrollContainer"]
+margin_right = 800.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 800, 300 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_top = 300.0
+margin_right = 800.0
+margin_bottom = 1300.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Label" type="Label" parent="TextureRect"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 209.0
+margin_top = -4.0
+margin_right = 388.0
+margin_bottom = 51.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 3 )
+text = "Question:"
+align = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 120.0
+margin_top = 134.0
+margin_right = 670.0
+margin_bottom = 494.0
+rect_scale = Vector2( 1.01, 1.01 )
+custom_fonts/normal_font = ExtResource( 3 )
+scroll_active = false

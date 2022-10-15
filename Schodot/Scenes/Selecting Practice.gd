@@ -15,6 +15,7 @@ export (PackedScene) var QuizScene
 export (PackedScene) var FlashScene
 export (PackedScene) var TypingScene
 export (PackedScene) var LearningScene
+export (PackedScene) var WordScene
 
 var ItemToDo = 0
 onready var SpawnHere = get_parent().get_node("Funs")
@@ -44,6 +45,9 @@ func _on_Typing_pressed():
 
 func _on_Learning_pressed():
 	ItemSpawn(LearningScene)
+
+func _on_Word_pressed():
+	ItemSpawn(WordScene)
 
 # Seperate function to save on code
 func ItemSpawn(Instance):
@@ -142,3 +146,9 @@ func _on_Flash_Card_All_pressed():
 
 func _on_Write_All_pressed():
 	InstanceAll(TypingScene)
+
+func _on_Learning_All_pressed():
+	InstanceAll(LearningScene)
+
+func _on_Word_Game_All_pressed():
+	InstanceAll(WordScene)
