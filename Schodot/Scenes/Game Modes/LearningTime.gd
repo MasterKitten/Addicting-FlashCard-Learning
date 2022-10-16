@@ -37,8 +37,7 @@ func _process(_delta):
 			UpdateText()
 	if WordTime == true:
 		if get_parent().get_node("Word Game") == null:
-			SelectingPrac.BackToLevel()
-			queue_free()
+			Finality()
 	
 	# If any of the things are doing stuff...
 	if WordTime == true || TypingTime == true || FlashTime == true || QuizTime == true:
@@ -97,3 +96,10 @@ func UpdateText():
 			TypingTime = false
 	get_node(".").visible = true
 	get_node("Music").play()
+
+func Finality():
+	get_node("Results").visible = true
+
+func _on_Continue_pressed():
+	SelectingPrac.BackToLevel()
+	queue_free()

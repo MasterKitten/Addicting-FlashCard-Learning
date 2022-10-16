@@ -12,6 +12,11 @@ export(Texture) var Err
 var Correct = false
 onready var SelectingPrac = get_parent().get_parent().get_node("Selecting Practice")
 
+var GoodJobs = 0
+var Wrong = 0
+var Total = 0
+var CalculateBoy = false
+
 # Display stuff before going back to not displaying anything
 func _process(delta):
 	if StartTimer == true:
@@ -30,10 +35,12 @@ func AudioPlay():
 
 func UpdateText():
 	if SelectedQuestions.size() == 0:
-		SelectingPrac.BackToLevel()
-		queue_free()
+		Finality()
 	else:
 		get_node("Question").text = SelectedQuestions[0]
+		if CalculateBoy == false:
+			CalculateBoy = true
+			Total = SelectedAnswers.size()
 	get_node("LineEdit").text = ""
 	get_node("Correct?").text = ""
 	get_node("Answer").text = ""
@@ -46,10 +53,12 @@ func _on_LineEdit_text_entered(new_text):
 			get_node("Correct?").text = "Correct!"
 			get_node("Mark").texture = Check
 			Correct = true
+			GoodJobs += 1
 		else:
 			get_node("Correct?").text = "Wrong!"
 			get_node("Mark").texture = Err
 			Correct = false
+			Wrong += 1
 		if ShowAnswers == true:
 			get_node("Answer").text = "Answer: " + SelectedAnswers[0]
 		else:
@@ -59,3 +68,13 @@ func _on_LineEdit_text_entered(new_text):
 		SelectedQuestions.remove(0)
 		get_node("AnimationPlayer").play("RESET")
 		StartTimer = true
+
+func Finality():
+	get_node("Results/Correct").text = "Correct: " + str(GoodJobs)
+	get_node("Results/Wrong").text = "Wrong: " + str(Wrong)
+	get_node("Results/Progress2").text = str(Correct) + " / " + str(Total)
+	get_node("Results").visible = true
+
+func _on_Continue_pressed():
+	SelectingPrac.BackToLevel()
+	queue_free()
