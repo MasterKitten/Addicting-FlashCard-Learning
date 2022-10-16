@@ -127,5 +127,8 @@ func Finality():
 
 # Go back to main menu
 func _on_Continue_pressed():
+	get_node("AnimationPlayer").play("FadeOut")
+
+func Back():
 	SelectingPrac.BackToLevel()
 	queue_free()

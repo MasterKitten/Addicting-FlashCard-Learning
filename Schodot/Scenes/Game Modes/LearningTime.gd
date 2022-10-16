@@ -25,18 +25,22 @@ func _process(_delta):
 	get_node("Label").text = "Round: " + str(RoundNumber)
 	if QuizTime == true:
 		if get_parent().get_node("Question & Answer") == null:
+			QuizTime = false
 			RoundNumber = 2
-			UpdateText()
+			get_node("Animator").play("SpinSpin")
 	if FlashTime == true:
 		if get_parent().get_node("Flash Card") == null:
+			FlashTime = false
 			RoundNumber = 3
-			UpdateText()
+			get_node("Animator").play("SpinSpin")
 	if TypingTime == true:
 		if get_parent().get_node("Typing") == null:
+			TypingTime = false
 			RoundNumber = 4
-			UpdateText()
+			get_node("Animator").play("SpinSpin")
 	if WordTime == true:
 		if get_parent().get_node("Word Game") == null:
+			WordTime = false
 			Finality()
 	
 	# If any of the things are doing stuff...
@@ -87,13 +91,10 @@ func UpdateText():
 			get_node(".").texture = RoundTextures[0]
 		2:
 			get_node(".").texture = RoundTextures[1]
-			QuizTime = false
 		3:
 			get_node(".").texture = RoundTextures[2]
-			FlashTime = false
 		4:
 			get_node(".").texture = RoundTextures[3]
-			TypingTime = false
 	get_node(".").visible = true
 	get_node("Music").play()
 

@@ -27,7 +27,7 @@ func Answer(Number):
 		Children[i].queue_free()
 		i += 1
 	if SelectedAnswers.size() == 0:
-		Finality()
+		get_node("AnimationPlayer").play("FadeIn")
 	else:
 		UpdateText()
 
@@ -54,5 +54,8 @@ func Finality():
 	get_node("Results").visible = true
 
 func _on_Continue_pressed():
+	get_node("AnimationPlayer").play("FadeOut")
+
+func Back():
 	SelectingPrac.BackToLevel()
 	queue_free()

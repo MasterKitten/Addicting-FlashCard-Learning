@@ -1,10 +1,52 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Images/Flash Card.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Game Modes/Flash Card.gd" type="Script" id=2]
 [ext_resource path="res://Font/Rawengulksans.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Font/Smaller_Rawengulksans.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Audio/Music/Minor-Turbulance-Trimmed.ogg" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=5]
+resource_name = "FadeOut"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Back"
+} ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "Flip"
@@ -131,6 +173,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Fade:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
 
 [node name="Flash Card" type="TextureRect"]
 margin_top = 130.0
@@ -167,6 +221,7 @@ margin_right = 356.0
 margin_bottom = 200.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FadeOut = SubResource( 5 )
 anims/Flip = SubResource( 1 )
 anims/LastCard = SubResource( 4 )
 anims/NextCard = SubResource( 3 )
@@ -192,6 +247,14 @@ stream = ExtResource( 5 )
 volume_db = -5.0
 autoplay = true
 bus = "Music"
+
+[node name="Fade" type="ColorRect" parent="."]
+visible = false
+margin_left = -1.77778
+margin_top = -54.8
+margin_right = 358.222
+margin_bottom = 272.2
+color = Color( 0, 0, 0, 0 )
 
 [connection signal="pressed" from="Flip" to="." method="_on_Flip_pressed"]
 [connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]

@@ -35,7 +35,7 @@ func AudioPlay():
 
 func UpdateText():
 	if SelectedQuestions.size() == 0:
-		Finality()
+		get_node("AnimationPlayer").play("FadeIn")
 	else:
 		get_node("Question").text = SelectedQuestions[0]
 		if CalculateBoy == false:
@@ -72,9 +72,12 @@ func _on_LineEdit_text_entered(new_text):
 func Finality():
 	get_node("Results/Correct").text = "Correct: " + str(GoodJobs)
 	get_node("Results/Wrong").text = "Wrong: " + str(Wrong)
-	get_node("Results/Progress2").text = str(Correct) + " / " + str(Total)
+	get_node("Results/Progress2").text = str(GoodJobs) + " / " + str(Total)
 	get_node("Results").visible = true
 
 func _on_Continue_pressed():
+	get_node("AnimationPlayer").play("FadeOut")
+
+func Back():
 	SelectingPrac.BackToLevel()
 	queue_free()

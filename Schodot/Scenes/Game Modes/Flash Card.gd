@@ -37,8 +37,7 @@ func _on_Next_pressed():
 	animator.play("NextCard")
 	Flipped = false
 	if CurrentQuestion == SelectedQuestions.size():
-		SelectingPrac.BackToLevel()
-		queue_free()
+		get_node("AnimationPlayer").play("FadeOut")
 	get_node("Back").visible = true
 	UpdateText()
 
@@ -52,3 +51,7 @@ func _on_Back_pressed():
 	else:
 		get_node("Back").visible = true
 	UpdateText()
+
+func Back():
+	SelectingPrac.BackToLevel()
+	queue_free()
