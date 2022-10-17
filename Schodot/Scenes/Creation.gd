@@ -45,9 +45,20 @@ func save_game():
 	
 	# Check the node has a save function.
 	# Call the node's save function.
+	var i = 0
+	var booool = true
+	while i < Groups.size():
+		if Questions[i].size() != Answers[i].size():
+			booool = false
+		i += 1
 	var node_data = save_node.call("save")
+	if booool == true:
+		save_game.store_line(to_json(node_data))
+		print("Saved!")
+	else:
+		print("Did not save!")
+		get_node("Error_Save").popup()
 	# Store the save dictionary as a new line in the save file.
-	save_game.store_line(to_json(node_data))
 	save_game.close()
 
 # when a file is selected...
@@ -75,6 +86,7 @@ func load_game():
 	var save_game = File.new()
 	if not save_game.file_exists(Name):
 		print("Error! Save does not exist!")
+		get_node("Error_Save").popup()
 		return # Error! We don't have a save to load.
 	
 	# What does this do? When loading another file, we have to remove EVERYTHING!

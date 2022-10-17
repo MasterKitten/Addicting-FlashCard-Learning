@@ -3,6 +3,7 @@ extends TextureRect
 # Variables to see if people should show their answers
 var ShowAnswers = false
 var Correcto = false
+onready var SelectingPrac = get_parent().get_parent().get_node("Selecting Practice")
 
 # Variables used to display the question & answers
 var SelectedQuestions = []
@@ -29,6 +30,14 @@ onready var CorrectScreen = get_node("Win")
 onready var IncorrectScreen = get_node("Lose")
 
 export (PackedScene) var HelpMe
+
+func Start(num):
+	if num == 1:
+		get_node("AnimationPlayer").play("Fade")
+		get_node("AnimationPlayer").seek(0, true)
+	elif num == 2:
+		get_node("AnimationPlayer").play("Fade")
+		get_node("AnimationPlayer").seek(0.4, true)
 
 func _physics_process(delta):
 	if StartTimer == true:
@@ -66,7 +75,7 @@ func _physics_process(delta):
 		timer = 0
 		StartTimer = false
 	if SelectedAnswers.size() == 0 && SelectedQuestions.size() == 0 && Correcto == true && Stop == true:
-		get_node("AnimationPlayer").play("Fade")
+		get_node("AnimationPlayer").play("FadeIn")
 		Stop = false
 	# Display the variables if the game ended.
 	if get_node("Results").visible == true:
@@ -126,5 +135,8 @@ func Finality():
 
 # Go back to main menu
 func _on_Continue_pressed():
-	get_parent().get_node("Selecting Practice").BackToLevel()
+	get_node("AnimationPlayer").play("FadeOut")
+
+func Back():
+	SelectingPrac.BackToLevel()
 	queue_free()

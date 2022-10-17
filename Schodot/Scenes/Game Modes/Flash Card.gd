@@ -8,6 +8,15 @@ var Flipped = false
 var CurrentQuestion = 0
 
 onready var animator = get_node("AnimationPlayer")
+onready var SelectingPrac = get_parent().get_parent().get_node("Selecting Practice")
+
+func Start(num):
+	if num == 1:
+		get_node("AnimationPlayer").play("Fade")
+		get_node("AnimationPlayer").seek(0, true)
+	elif num == 2:
+		get_node("AnimationPlayer").play("Fade")
+		get_node("AnimationPlayer").seek(0.4, true)
 
 func UpdateText():
 	# This sets the text in the middle of the animation
@@ -36,8 +45,7 @@ func _on_Next_pressed():
 	animator.play("NextCard")
 	Flipped = false
 	if CurrentQuestion == SelectedQuestions.size():
-		get_parent().get_node("Selecting Practice").BackToLevel()
-		queue_free()
+		get_node("AnimationPlayer").play("FadeOut")
 	get_node("Back").visible = true
 	UpdateText()
 
@@ -51,3 +59,7 @@ func _on_Back_pressed():
 	else:
 		get_node("Back").visible = true
 	UpdateText()
+
+func Back():
+	SelectingPrac.BackToLevel()
+	queue_free()
