@@ -31,6 +31,14 @@ onready var IncorrectScreen = get_node("Lose")
 
 export (PackedScene) var HelpMe
 
+func Start(num):
+	if num == 1:
+		get_node("AnimationPlayer").play("Fade")
+		get_node("AnimationPlayer").seek(0, true)
+	elif num == 2:
+		get_node("AnimationPlayer").play("Fade")
+		get_node("AnimationPlayer").seek(0.4, true)
+
 func _physics_process(delta):
 	if StartTimer == true:
 		timer += delta
@@ -67,7 +75,7 @@ func _physics_process(delta):
 		timer = 0
 		StartTimer = false
 	if SelectedAnswers.size() == 0 && SelectedQuestions.size() == 0 && Correcto == true && Stop == true:
-		get_node("AnimationPlayer").play("Fade")
+		get_node("AnimationPlayer").play("FadeIn")
 		Stop = false
 	# Display the variables if the game ended.
 	if get_node("Results").visible == true:

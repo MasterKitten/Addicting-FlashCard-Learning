@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Font/Rawengulksans.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scenes/Game Modes/LearningTime.gd" type="Script" id=2]
@@ -11,20 +11,60 @@
 [ext_resource path="res://Audio/Music/Heist-Successful-Trimmed.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Scenes/Game Modes/Word Game.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Font/Smaller_Rawengulksans.tres" type="DynamicFont" id=11]
+[ext_resource path="res://Images/GameMode Images/Round 4.png" type="Texture" id=12]
 
-[sub_resource type="Animation" id=1]
-length = 0.001
+[sub_resource type="Animation" id=5]
+resource_name = "FadeOut"
+length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_rotation")
+tracks/0/path = NodePath("Fade:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fade:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0 ]
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "SpawnThing"
+} ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -56,6 +96,115 @@ tracks/1/keys = {
 "method": "UpdateText"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "FadeIn"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "FadeOut"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Back"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [node name="LearningTime" type="TextureRect"]
 margin_right = 800.0
@@ -68,7 +217,7 @@ Quiz = ExtResource( 4 )
 Flash = ExtResource( 3 )
 typing = ExtResource( 5 )
 Word = ExtResource( 10 )
-RoundTextures = [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), null ]
+RoundTextures = [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 12 ) ]
 
 [node name="Label" type="Label" parent="."]
 margin_left = 301.0
@@ -117,9 +266,22 @@ rect_scale = Vector2( 0.6, 0.6 )
 custom_fonts/font = ExtResource( 11 )
 text = "GREAT!"
 
+[node name="Fade" type="ColorRect" parent="."]
+visible = false
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 811.0
+margin_bottom = 808.0
+color = Color( 0, 0, 0, 0 )
+
 [node name="Animator" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 1 )
+anims/FadeOut = SubResource( 5 )
 anims/SpinSpin = SubResource( 2 )
+
+[node name="Animator2" type="AnimationPlayer" parent="."]
+anims/FadeIn = SubResource( 8 )
+anims/FadeOut = SubResource( 7 )
+anims/RESET = SubResource( 9 )
 
 [connection signal="pressed" from="Begin" to="." method="_on_Begin_pressed"]
 [connection signal="pressed" from="Results/Continue" to="." method="_on_Continue_pressed"]

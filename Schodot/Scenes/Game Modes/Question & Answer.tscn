@@ -20,8 +20,36 @@ size = 24
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 resource_name = "Fade"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fade:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "FadeIn"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Fade:color")
@@ -102,33 +130,6 @@ tracks/2/keys = {
 "args": [  ],
 "method": "Back"
 } ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Fade:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Fade:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
 }
 
 [node name="Question & Answer" type="TextureRect"]
@@ -352,12 +353,12 @@ visible = false
 margin_top = 1.75
 margin_right = 200.0
 margin_bottom = 201.75
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Fade = SubResource( 3 )
+anims/Fade = SubResource( 6 )
+anims/FadeIn = SubResource( 3 )
 anims/FadeOut = SubResource( 5 )
-anims/RESET = SubResource( 4 )
 
 [connection signal="pressed" from="Answer 00" to="." method="_on_Answer_pressed" binds= [ 0 ]]
 [connection signal="pressed" from="Answer 01" to="." method="_on_Answer_pressed" binds= [ 1 ]]

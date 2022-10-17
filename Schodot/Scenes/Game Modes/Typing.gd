@@ -17,6 +17,14 @@ var Wrong = 0
 var Total = 0
 var CalculateBoy = false
 
+func Start(num):
+	if num == 1:
+		get_node("AnimationPlayer").play("Fade")
+		get_node("AnimationPlayer").seek(0, true)
+	elif num == 2:
+		get_node("AnimationPlayer").play("Fade")
+		get_node("AnimationPlayer").seek(0.4, true)
+
 # Display stuff before going back to not displaying anything
 func _process(delta):
 	if StartTimer == true:
@@ -43,6 +51,7 @@ func UpdateText():
 			Total = SelectedAnswers.size()
 	get_node("LineEdit").text = ""
 	get_node("Correct?").text = ""
+	get_node("Answer").text = ""
 	get_node("Answer").text = ""
 
 func _on_LineEdit_text_entered(new_text):

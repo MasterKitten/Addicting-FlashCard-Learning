@@ -14,6 +14,14 @@ var Wrong = 0
 var Total = 0
 var Dumb = false
 
+func Start(num):
+	if num == 1:
+		get_node("AnimationPlayer").play("Fade")
+		get_node("AnimationPlayer").seek(0, true)
+	elif num == 2:
+		get_node("AnimationPlayer").play("Fade")
+		get_node("AnimationPlayer").seek(0.4, true)
+
 func Answer(Number):
 	if Number == RandomQuestion:
 		Correct += 1

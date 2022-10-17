@@ -10,6 +10,14 @@ var CurrentQuestion = 0
 onready var animator = get_node("AnimationPlayer")
 onready var SelectingPrac = get_parent().get_parent().get_node("Selecting Practice")
 
+func Start(num):
+	if num == 1:
+		get_node("AnimationPlayer").play("Fade")
+		get_node("AnimationPlayer").seek(0, true)
+	elif num == 2:
+		get_node("AnimationPlayer").play("Fade")
+		get_node("AnimationPlayer").seek(0.4, true)
+
 func UpdateText():
 	# This sets the text in the middle of the animation
 	if Flipped == true && CurrentQuestion != SelectedQuestions.size():

@@ -83,6 +83,7 @@ func ItemSpawn(Instance):
 	ItemParent.SelectedAnswers = SelectedAnswers
 	ItemParent.ShowAnswers = ShowAnswer
 	ItemParent.UpdateText()
+	ItemParent.Start(1)
 	get_node("Animator").play("FadeOut")
 
 # Pop a window with game modes.
@@ -135,6 +136,7 @@ func InstanceAll(Instance):
 	ItemParent.SelectedAnswers = SelectedAnswers
 	ItemParent.ShowAnswers = ShowAnswer
 	ItemParent.UpdateText()
+	ItemParent.Start(1)
 	get_node("Animator").play("FadeOut")
 
 # Buttons to get all the grouos & do them all :D
